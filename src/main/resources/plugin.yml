@@ -1,0 +1,11 @@
+name: CraftableSpawners
+version: '${project.version}'
+main: com.siege.craftablespawners.CraftableSpawners
+api-version: 1.16
+authors: [ Siege ]
+description: This plugin allows for players to craft spawners without any commands. It also provides a command.
+website: https://github.com/Sl3GE/Craftable-Spawners
+commands:
+  giveSpawner:
+    description: Give Player specified amount of specified spanwer.
+    usage: /giveSpawner <entityType> <amount>
