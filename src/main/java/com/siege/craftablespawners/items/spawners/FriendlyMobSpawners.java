@@ -1,8 +1,8 @@
 package com.siege.craftablespawners.items.spawners;
 
 import com.siege.craftablespawners.items.AbstractedCreationMethods;
-import com.siege.craftablespawners.items.condenseditems.CondensedFriendlyMobItems;
-import com.siege.craftablespawners.items.supercondenseditems.SuperCondensedFriendlyMobItems;
+import com.siege.craftablespawners.items.CondensedItems;
+import com.siege.craftablespawners.items.SuperCondensedItems;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -62,7 +62,7 @@ public class FriendlyMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("iron_golem_spawner"), ironGolemSpawner);
         recipe.shape("III", "IBI", "III");
-        recipe.setIngredient('I', new RecipeChoice.ExactChoice(CondensedFriendlyMobItems.condensedIronBlock));
+        recipe.setIngredient('I', new RecipeChoice.ExactChoice(CondensedItems.condensedItems.get(Material.IRON_BLOCK)));
         recipe.setIngredient('B', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -72,8 +72,8 @@ public class FriendlyMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("cow_spawner"), cowSpawner);
         recipe.shape("LLL", "BIB", "BBB");
-        recipe.setIngredient('L', new RecipeChoice.ExactChoice(SuperCondensedFriendlyMobItems.superCondensedLeather));
-        recipe.setIngredient('B', new RecipeChoice.ExactChoice(SuperCondensedFriendlyMobItems.superCondensedBeef));
+        recipe.setIngredient('L', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.LEATHER)));
+        recipe.setIngredient('B', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.BEEF)));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -83,8 +83,8 @@ public class FriendlyMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("snowman_spawner"), snowManSpawner);
         recipe.shape("CCC", "BIB", "BBB");
-        recipe.setIngredient('C', new RecipeChoice.ExactChoice(SuperCondensedFriendlyMobItems.superCondensedCarvedPumpkin));
-        recipe.setIngredient('B', new RecipeChoice.ExactChoice(SuperCondensedFriendlyMobItems.superCondensedSnowBlock));
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.CARVED_PUMPKIN)));
+        recipe.setIngredient('B', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.SNOW_BLOCK)));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -94,8 +94,8 @@ public class FriendlyMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("sheep_spawner"), sheepSpawner);
         recipe.shape("WWW", "MIM", "MMM");
-        recipe.setIngredient('W', new RecipeChoice.ExactChoice(SuperCondensedFriendlyMobItems.superCondensedWhiteWool));
-        recipe.setIngredient('M', new RecipeChoice.ExactChoice(SuperCondensedFriendlyMobItems.superCondensedMutton));
+        recipe.setIngredient('W', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.WHITE_WOOL)));
+        recipe.setIngredient('M', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.MUTTON)));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -105,7 +105,7 @@ public class FriendlyMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("pig_spawner"), pigSpawner);
         recipe.shape("PPP", "PIP", "PPP");
-        recipe.setIngredient('P', new RecipeChoice.ExactChoice(SuperCondensedFriendlyMobItems.superCondensedPorkChop));
+        recipe.setIngredient('P', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.PORKCHOP)));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -115,7 +115,7 @@ public class FriendlyMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("horse_spawner"), horseSpawner);
         recipe.shape("LLL", "LIL", "LLL");
-        recipe.setIngredient('L', new RecipeChoice.ExactChoice(SuperCondensedFriendlyMobItems.superCondensedLeather));
+        recipe.setIngredient('L', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.LEATHER)));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -125,7 +125,7 @@ public class FriendlyMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("squid_spawner"), squidSpawner);
         recipe.shape("SSS", "SIS", "SSS");
-        recipe.setIngredient('S', new RecipeChoice.ExactChoice(SuperCondensedFriendlyMobItems.superCondensedInkSac));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.INK_SAC)));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -135,8 +135,8 @@ public class FriendlyMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("chicken_spawner"), chickenSpawner);
         recipe.shape("FFF", "CIC", "CCC");
-        recipe.setIngredient('F', new RecipeChoice.ExactChoice(SuperCondensedFriendlyMobItems.superCondensedFeather));
-        recipe.setIngredient('C', new RecipeChoice.ExactChoice(SuperCondensedFriendlyMobItems.superCondensedChicken));
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.FEATHER)));
+        recipe.setIngredient('C', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.CHICKEN)));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -146,7 +146,7 @@ public class FriendlyMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("villager_spawner"), villagerSpawner);
         recipe.shape(" E ", "EIE", " E ");
-        recipe.setIngredient('E', new RecipeChoice.ExactChoice(CondensedFriendlyMobItems.condensedEmeraldBlock));
+        recipe.setIngredient('E', new RecipeChoice.ExactChoice(CondensedItems.condensedItems.get(Material.EMERALD_BLOCK)));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }

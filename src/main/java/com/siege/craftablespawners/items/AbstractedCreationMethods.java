@@ -93,7 +93,7 @@ public class AbstractedCreationMethods {
     public static ItemStack getSpawnerFromEntityType(EntityType entityType) {
         ItemStack itemStack = FriendlyMobSpawners.getFriendlyEntityTypesMap().get(entityType);
         if (itemStack == null) {
-            itemStack = HostileMobSpawners.gethostileEntityTypesMap().get(entityType);
+            itemStack = HostileMobSpawners.getHostileEntityTypesMap().get(entityType);
             if (itemStack == null) {
                 itemStack = new ItemStack(Material.SPAWNER, 1);
             }
