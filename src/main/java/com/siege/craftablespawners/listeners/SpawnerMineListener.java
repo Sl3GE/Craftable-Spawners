@@ -2,6 +2,8 @@ package com.siege.craftablespawners.listeners;
 
 import com.siege.craftablespawners.CraftableSpawners;
 import com.siege.craftablespawners.items.AbstractedCreationMethods;
+import com.siege.craftablespawners.items.spawners.FriendlyMobSpawners;
+import com.siege.craftablespawners.items.spawners.HostileMobSpawners;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -34,29 +36,32 @@ public class SpawnerMineListener implements Listener {
             return;
         }
 
-        // get spawner location & type
-        Location loc = block.getLocation();
-        CreatureSpawner spawner = (CreatureSpawner) block.getState();
-        EntityType entityType = spawner.getSpawnedType();
-
         Player player = e.getPlayer();
+        ItemStack itemInHand = player.getInventory().getItemInHand(); // update to account for deprecation
 
-
-        ItemStack itemInHand = player.getInventory().getItemInHand();
         if (itemInHand.containsEnchantment(Enchantment.SILK_TOUCH)) {
+            // get spawner location & type
+            CreatureSpawner spawner = (CreatureSpawner) block.getState();
+            EntityType entityType = spawner.getSpawnedType();
+            ItemStack itemStack = getSpawnerFromEntityType(entityType);
+
             e.setExpToDrop(0);
-            giveSpawner(e, entityType, loc, player, block);
+            Location loc = block.getLocation();
+            loc.getWorld().dropItemNaturally(loc, itemStack);
             player.sendMessage("§6Spawner Dropped!");
         } else {
             player.sendMessage("§6Spawner Broke!");
         }
     }
 
-    private void giveSpawner(BlockBreakEvent e, EntityType entityType, Location loc, Player player, Block block) {
-        //ItemStack item = new ItemStack(Material.SPAWNER, 1);
-
-        ItemStack itemStack = AbstractedCreationMethods.getSpawnerFromEntityType(entityType);
-
-        loc.getWorld().dropItemNaturally(loc, itemStack);
+    private static ItemStack getSpawnerFromEntityType(EntityType entityType) {
+        ItemStack itemStack = FriendlyMobSpawners.getFriendlyEntityTypesMap().get(entityType);
+        if (itemStack == null) {
+            itemStack = HostileMobSpawners.getHostileEntityTypesMap().get(entityType);
+            if (itemStack == null) {
+                itemStack = new ItemStack(Material.SPAWNER, 1);
+            }
+        }
+        return itemStack;
     }
 }

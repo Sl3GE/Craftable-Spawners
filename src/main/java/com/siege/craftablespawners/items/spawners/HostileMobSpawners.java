@@ -72,7 +72,7 @@ public class HostileMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("skeleton_spawner"), skeletonSpawner);
         recipe.shape("BBB", "BIB", "BBB");
-        recipe.setIngredient('B', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.BONE)));
+        recipe.setIngredient('B', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedBone));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -82,7 +82,7 @@ public class HostileMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("zombie_spawner"), zombieSpawner);
         recipe.shape("FFF", "FIF", "FFF");
-        recipe.setIngredient('F', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.ROTTEN_FLESH)));
+        recipe.setIngredient('F', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedRottenFlesh));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -92,7 +92,7 @@ public class HostileMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("blaze_spawner"), blazeSpawner);
         recipe.shape("RRR", "RIR", "RRR");
-        recipe.setIngredient('R', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.BLAZE_ROD)));
+        recipe.setIngredient('R', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedBlazeRod));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -102,7 +102,7 @@ public class HostileMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("creeper_spawner"), creeperSpawner);
         recipe.shape("GGG", "GIG", "GGG");
-        recipe.setIngredient('G', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.GUNPOWDER)));
+        recipe.setIngredient('G', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedGunpowder));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -112,7 +112,7 @@ public class HostileMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("spider_spawner"), spiderSpawner);
         recipe.shape("SSS", "SIS", "SSS");
-        recipe.setIngredient('S', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.STRING)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedString));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -122,7 +122,7 @@ public class HostileMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("enderman_spawner"), endermanSpawner);
         recipe.shape("EEE", "EIE", "EEE");
-        recipe.setIngredient('E', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.ENDER_PEARL)));
+        recipe.setIngredient('E', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedEnderPearl));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -132,7 +132,7 @@ public class HostileMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("slime_spawner"), slimeSpawner);
         recipe.shape("SSS", "SIS", "SSS");
-        recipe.setIngredient('S', new RecipeChoice.ExactChoice(CondensedItems.condensedItems.get(Material.SLIME_BLOCK)));
+        recipe.setIngredient('S', new RecipeChoice.ExactChoice(CondensedItems.condensedSlimeBlock));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -142,7 +142,7 @@ public class HostileMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("magma_cube_spawner"), magmaCubeSpawner);
         recipe.shape("MMM", "MIM", "MMM");
-        recipe.setIngredient('M', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.MAGMA_CREAM)));
+        recipe.setIngredient('M', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedMagmaCream));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -152,7 +152,7 @@ public class HostileMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("ghast_spawner"), ghastSpawner);
         recipe.shape("GGG", "GIG", "GGG");
-        recipe.setIngredient('G', new RecipeChoice.ExactChoice(CondensedItems.condensedItems.get(Material.GHAST_TEAR)));
+        recipe.setIngredient('G', new RecipeChoice.ExactChoice(CondensedItems.condensedGhastTear));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -162,7 +162,7 @@ public class HostileMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("zombie_piglin_spawner"), zombifiedPiglinSpawner);
         recipe.shape("GGG", "GIG", "GGG");
-        recipe.setIngredient('G', new RecipeChoice.ExactChoice(CondensedItems.condensedItems.get(Material.GOLD_BLOCK)));
+        recipe.setIngredient('G', new RecipeChoice.ExactChoice(CondensedItems.condensedGoldBlock));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -172,7 +172,7 @@ public class HostileMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("wither_spawner"), witherSpawner);
         recipe.shape("NNN", "NIN", "NNN");
-        recipe.setIngredient('N', new RecipeChoice.ExactChoice(CondensedItems.condensedItems.get(Material.NETHER_STAR)));
+        recipe.setIngredient('N', new RecipeChoice.ExactChoice(CondensedItems.condensedNetherStar));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -182,7 +182,7 @@ public class HostileMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("wither_skeleton_spawner"), witherSkeletonSpawner);
         recipe.shape("WWW", "WIW", "WWW");
-        recipe.setIngredient('W', new RecipeChoice.ExactChoice(CondensedItems.condensedItems.get(Material.WITHER_SKELETON_SKULL)));
+        recipe.setIngredient('W', new RecipeChoice.ExactChoice(CondensedItems.condensedWitherSkeletonSkull));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }
@@ -192,8 +192,8 @@ public class HostileMobSpawners {
 
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("witch_spawner"), witchSpawner);
         recipe.shape("GRG", "RIR", "GRG");
-        recipe.setIngredient('G', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.GUNPOWDER)));
-        recipe.setIngredient('R', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedItems.get(Material.REDSTONE_BLOCK)));
+        recipe.setIngredient('G', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedGunpowder));
+        recipe.setIngredient('R', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedRedstoneBlock));
         recipe.setIngredient('I', Material.IRON_BARS);
         Bukkit.addRecipe(recipe);
     }

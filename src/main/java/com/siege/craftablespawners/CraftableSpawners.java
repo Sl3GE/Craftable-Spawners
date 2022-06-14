@@ -6,7 +6,6 @@ import com.siege.craftablespawners.items.CondensedItems;
 import com.siege.craftablespawners.items.spawners.FriendlyMobSpawners;
 import com.siege.craftablespawners.items.spawners.HostileMobSpawners;
 import com.siege.craftablespawners.items.SuperCondensedItems;
-import com.siege.craftablespawners.items.supercondenseditems.SuperCondensedHostileMobItems;
 import com.siege.craftablespawners.listeners.SpawnerMineListener;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,7 +17,6 @@ public class CraftableSpawners extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new SpawnerMineListener(this), this);
         CondensedItems.init();
-        SuperCondensedHostileMobItems.init();
         SuperCondensedItems.init();
         HostileMobSpawners.init();
         FriendlyMobSpawners.init();

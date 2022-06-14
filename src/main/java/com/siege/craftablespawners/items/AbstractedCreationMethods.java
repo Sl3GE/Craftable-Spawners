@@ -1,7 +1,5 @@
 package com.siege.craftablespawners.items;
 
-import com.siege.craftablespawners.items.spawners.FriendlyMobSpawners;
-import com.siege.craftablespawners.items.spawners.HostileMobSpawners;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -17,7 +15,7 @@ import org.bukkit.inventory.meta.BlockStateMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class AbstractedCreationMethods {
-    public static ItemStack createItem(Material material, int amount, String displayName) {
+    public static ItemStack createShinyItem(Material material, int amount, String displayName) {
         ItemStack item = new ItemStack(material, amount);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(displayName);
@@ -54,7 +52,7 @@ public class AbstractedCreationMethods {
     }
 
 
-    private static void separateCondensendItemRecipe(ItemStack itemStackName, String recipeKey, ItemStack ingredient, String[] shapeList) {
+    private static void separateCondensedItemRecipe(ItemStack itemStackName, String recipeKey, ItemStack ingredient, String[] shapeList) {
         ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft(recipeKey), itemStackName);
         recipe.shape(shapeList);
         recipe.setIngredient('X', new RecipeChoice.ExactChoice(ingredient));
@@ -74,13 +72,13 @@ public class AbstractedCreationMethods {
                 } else {
                     specifiedShapeList = new String[]{"   ", "   ", shapeList[i]};
                 }
-                separateCondensendItemRecipe(itemStackName, recipeKey + i + j, ingredient, specifiedShapeList);
+                separateCondensedItemRecipe(itemStackName, recipeKey + i + j, ingredient, specifiedShapeList);
             }
         }
         specifiedShapeList = new String[]{"X ", "  "};
-        separateCondensendItemRecipe(itemStackName, recipeKey + 1, ingredient, specifiedShapeList);
+        separateCondensedItemRecipe(itemStackName, recipeKey + 1, ingredient, specifiedShapeList);
         specifiedShapeList = new String[]{"  ", "X "};
-        separateCondensendItemRecipe(itemStackName, recipeKey + 2, ingredient, specifiedShapeList);
+        separateCondensedItemRecipe(itemStackName, recipeKey + 2, ingredient, specifiedShapeList);
     }
 
     public static void condenseItems(ItemStack resultItem, String recipeKey, ItemStack ingredient) {
@@ -88,16 +86,5 @@ public class AbstractedCreationMethods {
         recipe.shape("XXX", "XXX", "XXX");
         recipe.setIngredient('X', new RecipeChoice.ExactChoice(ingredient));
         Bukkit.getServer().addRecipe(recipe);
-    }
-
-    public static ItemStack getSpawnerFromEntityType(EntityType entityType) {
-        ItemStack itemStack = FriendlyMobSpawners.getFriendlyEntityTypesMap().get(entityType);
-        if (itemStack == null) {
-            itemStack = HostileMobSpawners.getHostileEntityTypesMap().get(entityType);
-            if (itemStack == null) {
-                itemStack = new ItemStack(Material.SPAWNER, 1);
-            }
-        }
-        return itemStack;
     }
 }
