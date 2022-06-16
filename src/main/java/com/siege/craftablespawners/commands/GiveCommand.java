@@ -1,7 +1,6 @@
 package com.siege.craftablespawners.commands;
 
 import com.siege.craftablespawners.items.AbstractedCreationMethods;
-import com.siege.craftablespawners.items.spawners.FriendlyMobSpawners;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -10,6 +9,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import org.apache.commons.text.WordUtils;
 import java.util.Locale;
 
 public class GiveCommand implements CommandExecutor {
@@ -37,73 +37,8 @@ public class GiveCommand implements CommandExecutor {
         return true;
     }
 
-    public String getSpawnerNameFromEntityType(String entity) {
-        String spawnerType = "";
-        switch(entity) {
-            case "IRON_GOLEM":
-                spawnerType = "Iron Golem";
-                break;
-            case "COW":
-                spawnerType = "Cow";
-                break;
-            case "SNOWMAN":
-                spawnerType = "Snowman";
-                break;
-            case "SHEEP":
-                spawnerType = "Sheep";
-                break;
-            case "PIG":
-                spawnerType = "Pig";
-                break;
-            case "HORSE":
-                spawnerType = "Horse";
-                break;
-            case "SQUID":
-                spawnerType = "Squid";
-                break;
-            case "CHICKEN":
-                spawnerType = "Chicken";
-                break;
-            case "WITCH":
-                spawnerType = "Witch";
-                break;
-            case "WITHER_SKELETON":
-                spawnerType = "Wither Skeleton";
-                break;
-            case "WITHER":
-                spawnerType = "Wither";
-                break;
-            case "ZOMBIFIED_PIGLIN":
-                spawnerType = "Zombified Piglin";
-                break;
-            case "GHAST":
-                spawnerType = "Ghast";
-                break;
-            case "MAGMA_CUBE":
-                spawnerType = "Magma Cube";
-                break;
-            case "SLIME":
-                spawnerType = "Slime";
-                break;
-            case "BLAZE":
-                spawnerType = "Blaze";
-                break;
-            case "CREEPER":
-                spawnerType = "Creeper";
-                break;
-            case "SPIDER":
-                spawnerType = "Spider";
-                break;
-            case "ENDERMAN":
-                spawnerType = "Enderman";
-                break;
-            case "ZOMBIE":
-                spawnerType = "Zombie";
-                break;
-            case "SKELETON":
-                spawnerType = "Skeleton";
-                break;
-        }
+    private String getSpawnerNameFromEntityType(String entityType) {
+        String spawnerType = WordUtils.capitalizeFully(entityType.replace('_',' '));
         return "§6" + spawnerType+ " Spawner";
     }
 }

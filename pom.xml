@@ -6,12 +6,12 @@
 
     <groupId>com.siege</groupId>
     <artifactId>CraftableSpawners</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.2.2</version>
     <packaging>jar</packaging>
 
     <name>CraftableSpawners</name>
 
-    <description>This plugin allows for players to craft spawners without any commands. It also provides a command.
+    <description>This plugin allows for players to craft spawners without any commands. It also provides a command get any available spawner.
     </description>
     <properties>
         <java.version>1.8</java.version>
@@ -70,8 +70,13 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.1-R0.1-SNAPSHOT</version>
+            <version>1.16.5-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.9</version>
         </dependency>
     </dependencies>
 </project>
