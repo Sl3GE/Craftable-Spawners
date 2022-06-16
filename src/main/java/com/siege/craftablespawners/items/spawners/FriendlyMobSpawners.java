@@ -17,7 +17,7 @@ public class FriendlyMobSpawners {
 
     private static ItemStack ironGolemSpawner;
     private static ItemStack cowSpawner;
-    private static ItemStack snowManSpawner;
+    private static ItemStack snowmanSpawner;
     private static ItemStack sheepSpawner;
     private static ItemStack pigSpawner;
     private static ItemStack horseSpawner;
@@ -26,11 +26,10 @@ public class FriendlyMobSpawners {
     private static ItemStack villagerSpawner;
     private static HashMap<EntityType, ItemStack> friendlyEntityTypesMap;
 
-
     public static void init() {
         ironGolemSpawnerRecipe();
         cowSpawnerRecipe();
-        snowManSpawnerRecipe();
+        snowmanSpawnerRecipe();
         sheepSpawnerRecipe();
         pigSpawnerRecipe();
         horseSpawnerRecipe();
@@ -44,7 +43,7 @@ public class FriendlyMobSpawners {
         friendlyEntityTypesMap = new HashMap<>();
         friendlyEntityTypesMap.put(EntityType.IRON_GOLEM, ironGolemSpawner);
         friendlyEntityTypesMap.put(EntityType.COW, cowSpawner);
-        friendlyEntityTypesMap.put(EntityType.SNOWMAN, snowManSpawner);
+        friendlyEntityTypesMap.put(EntityType.SNOWMAN, snowmanSpawner);
         friendlyEntityTypesMap.put(EntityType.SHEEP, sheepSpawner);
         friendlyEntityTypesMap.put(EntityType.PIG, pigSpawner);
         friendlyEntityTypesMap.put(EntityType.HORSE, horseSpawner);
@@ -78,10 +77,10 @@ public class FriendlyMobSpawners {
         Bukkit.addRecipe(recipe);
     }
 
-    private static void snowManSpawnerRecipe() {
-        snowManSpawner = AbstractedCreationMethods.itemSpawnerCreator(Material.SPAWNER, 1, EntityType.SNOWMAN, "§6Snowman Spawner");
+    private static void snowmanSpawnerRecipe() {
+        snowmanSpawner = AbstractedCreationMethods.itemSpawnerCreator(Material.SPAWNER, 1, EntityType.SNOWMAN, "§6Snowman Spawner");
 
-        ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("snowman_spawner"), snowManSpawner);
+        ShapedRecipe recipe = new ShapedRecipe(NamespacedKey.minecraft("snowman_spawner"), snowmanSpawner);
         recipe.shape("CCC", "BIB", "BBB");
         recipe.setIngredient('C', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedCarvedPumpkin));
         recipe.setIngredient('B', new RecipeChoice.ExactChoice(SuperCondensedItems.superCondensedSnowBlock));

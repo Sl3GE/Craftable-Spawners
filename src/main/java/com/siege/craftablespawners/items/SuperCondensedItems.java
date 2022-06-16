@@ -3,8 +3,6 @@ package com.siege.craftablespawners.items;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.HashMap;
-
 public class SuperCondensedItems {
 
     // Hostile Mob items

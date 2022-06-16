@@ -14,6 +14,7 @@ import org.bukkit.inventory.ShapedRecipe;
 import java.util.HashMap;
 
 public class HostileMobSpawners {
+
     private static ItemStack skeletonSpawner;
     private static ItemStack zombieSpawner;
     private static ItemStack blazeSpawner;
