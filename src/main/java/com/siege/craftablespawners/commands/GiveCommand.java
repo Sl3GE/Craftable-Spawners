@@ -10,9 +10,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.HashSet;
 import java.util.Locale;
-import java.util.Set;
 
 public class GiveCommand implements CommandExecutor {
     @Override
@@ -44,68 +42,39 @@ public class GiveCommand implements CommandExecutor {
         return "§6" + spawnerType+ " Spawner";
     }
 
-    // refactor below
-
     private static String capitalizeFully(String str) {
-        return capitalizeFully(str, (char[])null);
-    }
-
-    private static String capitalizeFully(String str, char... delimiters) {
         if (StringUtils.isEmpty(str)) {
             return str;
         } else {
             str = str.toLowerCase();
-            return capitalize(str, delimiters);
+            return capitalize(str);
         }
     }
-    private static String capitalize(String str, char... delimiters) {
-        if (StringUtils.isEmpty(str)) {
-            return str;
-        } else {
-            Set<Integer> delimiterSet = generateDelimiterSet(delimiters);
-            int strLen = str.length();
-            int[] newCodePoints = new int[strLen];
-            int outOffset = 0;
-            boolean capitalizeNext = true;
-            int index = 0;
+    private static String capitalize(String str) {
+        int strLen = str.length();
+        int[] newCodePoints = new int[strLen];
+        int outOffset = 0;
+        boolean capitalizeNext = true;
+        int index = 0;
+        int spaceCodePoint = Character.codePointAt(new char[]{' '}, 0);
 
-            while(index < strLen) {
-                int codePoint = str.codePointAt(index);
-                if (delimiterSet.contains(codePoint)) {
-                    capitalizeNext = true;
-                    newCodePoints[outOffset++] = codePoint;
-                    index += Character.charCount(codePoint);
-                } else if (capitalizeNext) {
-                    int titleCaseCodePoint = Character.toTitleCase(codePoint);
-                    newCodePoints[outOffset++] = titleCaseCodePoint;
-                    index += Character.charCount(titleCaseCodePoint);
-                    capitalizeNext = false;
-                } else {
-                    newCodePoints[outOffset++] = codePoint;
-                    index += Character.charCount(codePoint);
-                }
+        while(index < strLen) {
+            int codePoint = str.codePointAt(index);
+            if (spaceCodePoint == codePoint) {
+                capitalizeNext = true;
+                newCodePoints[outOffset++] = codePoint;
+                index += Character.charCount(codePoint);
+            } else if (capitalizeNext) {
+                int titleCaseCodePoint = Character.toTitleCase(codePoint);
+                newCodePoints[outOffset++] = titleCaseCodePoint;
+                index += Character.charCount(titleCaseCodePoint);
+                capitalizeNext = false;
+            } else {
+                newCodePoints[outOffset++] = codePoint;
+                index += Character.charCount(codePoint);
             }
-
-            return new String(newCodePoints, 0, outOffset);
         }
+
+        return new String(newCodePoints, 0, outOffset);
     }
-
-    private static Set<Integer> generateDelimiterSet(char[] delimiters) {
-        Set<Integer> delimiterHashSet = new HashSet();
-        if (delimiters != null && delimiters.length != 0) {
-            for(int index = 0; index < delimiters.length; ++index) {
-                delimiterHashSet.add(Character.codePointAt(delimiters, index));
-            }
-
-            return delimiterHashSet;
-        } else {
-            if (delimiters == null) {
-                delimiterHashSet.add(Character.codePointAt(new char[]{' '}, 0));
-            }
-
-            return delimiterHashSet;
-        }
-    }
-
-
 }
