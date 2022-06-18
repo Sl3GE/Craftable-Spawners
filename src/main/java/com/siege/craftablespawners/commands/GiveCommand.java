@@ -1,6 +1,7 @@
 package com.siege.craftablespawners.commands;
 
 import com.siege.craftablespawners.items.AbstractedCreationMethods;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -9,7 +10,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import org.apache.commons.text.WordUtils;
 import java.util.Locale;
 
 public class GiveCommand implements CommandExecutor {
@@ -38,7 +38,43 @@ public class GiveCommand implements CommandExecutor {
     }
 
     private String getSpawnerNameFromEntityType(String entityType) {
-        String spawnerType = WordUtils.capitalizeFully(entityType.replace('_',' '));
+        String spawnerType = capitalizeFully(entityType.replace('_',' '));
         return "§6" + spawnerType+ " Spawner";
+    }
+
+    private static String capitalizeFully(String str) {
+        if (StringUtils.isEmpty(str)) {
+            return str;
+        } else {
+            str = str.toLowerCase();
+            return capitalize(str);
+        }
+    }
+    private static String capitalize(String str) {
+        int strLen = str.length();
+        int[] newCodePoints = new int[strLen];
+        int outOffset = 0;
+        boolean capitalizeNext = true;
+        int index = 0;
+        int spaceCodePoint = Character.codePointAt(new char[]{' '}, 0);
+
+        while(index < strLen) {
+            int codePoint = str.codePointAt(index);
+            if (spaceCodePoint == codePoint) {
+                capitalizeNext = true;
+                newCodePoints[outOffset++] = codePoint;
+                index += Character.charCount(codePoint);
+            } else if (capitalizeNext) {
+                int titleCaseCodePoint = Character.toTitleCase(codePoint);
+                newCodePoints[outOffset++] = titleCaseCodePoint;
+                index += Character.charCount(titleCaseCodePoint);
+                capitalizeNext = false;
+            } else {
+                newCodePoints[outOffset++] = codePoint;
+                index += Character.charCount(codePoint);
+            }
+        }
+
+        return new String(newCodePoints, 0, outOffset);
     }
 }
