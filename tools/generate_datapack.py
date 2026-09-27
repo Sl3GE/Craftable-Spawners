@@ -26,11 +26,14 @@ import zipfile
 from pathlib import Path
 
 NS = "craftable_spawners"
+VERSION = "2.0.0"
 PACK_FORMAT = 121  # Java Edition 26.3
-DESCRIPTION = "Craftable Spawners - craft mob spawners from condensed mob drops"
+DESCRIPTION = "Craftable Spawners v%s - craft mob spawners from condensed mob drops" % VERSION
+PACK_NAME = "%s-%s" % (NS, VERSION)
 
 REPO = Path(__file__).resolve().parent.parent
-OUT = REPO / "datapack"
+OUT_ROOT = REPO / "datapack"
+OUT = OUT_ROOT / PACK_NAME
 
 PLACEHOLDER_ITEM = "minecraft:command_block"
 
@@ -718,14 +721,16 @@ def generate(out=OUT):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--zip", action="store_true", help="also write dist/craftable_spawners.zip")
+    parser.add_argument("--zip", action="store_true", help="also write dist/%s.zip" % PACK_NAME)
     args = parser.parse_args()
+    if OUT_ROOT.exists():
+        shutil.rmtree(OUT_ROOT)
     pack, recipes = generate()
     print("Wrote %d files for %d recipes to %s" % (len(pack.files), len(recipes), OUT))
     if args.zip:
         dist = REPO / "dist"
         dist.mkdir(exist_ok=True)
-        archive = dist / "craftable_spawners.zip"
+        archive = dist / (PACK_NAME + ".zip")
         with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as zf:
             for path in sorted(pack.files):
                 zf.write(OUT / path, path)

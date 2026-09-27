@@ -6,9 +6,9 @@ source is still in `src/` for reference).
 
 ## Installation
 
-1. Copy the `datapack` folder into your world's `datapacks` folder and rename
-   it to `craftable_spawners` (or run `python3 tools/generate_datapack.py --zip`
-   and drop `dist/craftable_spawners.zip` in instead).
+1. Copy `datapack/craftable_spawners-<version>` into your world's `datapacks`
+   folder (or run `python3 tools/generate_datapack.py --zip` and drop
+   `dist/craftable_spawners-<version>.zip` in instead).
 2. Run `/reload` or restart the world.
 
 ## How it works in game
@@ -63,12 +63,12 @@ The plugin's `/giveSpawner <entityType> <amount>` is now a function:
 ```
 
 To remove the pack cleanly, run `/function craftable_spawners:uninstall` and
-then `/datapack disable "file/craftable_spawners"`.
+then `/datapack disable "file/craftable_spawners-<version>"`.
 
 ## Development
 
-The data pack is generated. Edit `tools/generate_datapack.py` (the item and
-recipe tables are at the top), then run:
+The data pack is generated. Edit `tools/generate_datapack.py` (the version and
+the item and recipe tables are at the top), then run:
 
 ```
 python3 tools/generate_datapack.py
