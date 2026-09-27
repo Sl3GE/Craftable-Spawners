@@ -516,6 +516,21 @@ def gen_advancements(pack, recipes):
             ])
 
 
+MAX_STACK = {"ender_pearl": 16}
+
+
+def output_targets():
+    """{give target: (item stack argument, max stack size)} for everything a resolver can hand out."""
+    targets = {}
+    for item, _, has_super in CONDENSED:
+        for tier in [0, C] + ([S] if has_super else []):
+            targets[tier_item_id(item, tier)] = (tier_item_snbt(item, tier), MAX_STACK.get(item, 64))
+    targets["vanilla:iron_bars"] = ("minecraft:iron_bars", 64)
+    for mob, _, _ in SPAWNERS:
+        targets["spawner:" + mob] = (spawner_item_snbt("minecraft:" + mob, mob), 64)
+    return targets
+
+
 def give_function_for(target):
     if target.startswith("spawner:"):
         return "%s:spawner/give_%s" % (NS, target.split(":", 1)[1])
@@ -524,15 +539,26 @@ def give_function_for(target):
     return "%s:item/%s" % (NS, target)
 
 
+def cursor_function_for(target):
+    return "%s:cursor/%s" % (NS, target.replace(":", "_"))
+
+
 def gen_resolvers(pack, recipes):
     constants = set()
     dispatch = []
+    targets = output_targets()
+    placeholder_on_cursor = 'player.cursor %s[minecraft:custom_data~{%s:{group:"placeholder"}}]' % (PLACEHOLDER_ITEM, NS)
     for r in recipes:
         lines = ["# %s (%s)" % (r.recipe_id, r.kind)]
-        for target, expr in sorted(r.outputs().items()):
+        # A result taken with a click is on the cursor; the first output goes there too.
+        lines.append("scoreboard players set #cursor cs.tmp 0")
+        lines.append("execute if items entity @s %s run scoreboard players set #cursor cs.tmp 1" % placeholder_on_cursor)
+        for target, expr in sorted(r.outputs().items(), key=lambda kv: (not kv[0].startswith("spawner:"), kv[0])):
             constants |= expr.constants()
             lines += expr.commands()
             lines.append("execute store result storage %s:tmp give.count int 1 run scoreboard players get #r cs.tmp" % NS)
+            lines.append("execute if score #cursor cs.tmp matches 1 if score #r cs.tmp matches 1..%d run function %s with storage %s:tmp give"
+                         % (targets[target][1], cursor_function_for(target), NS))
             lines.append("execute if score #r cs.tmp matches 1.. run function %s with storage %s:tmp give"
                          % (give_function_for(target), NS))
         pack.function("resolve/" + r.key, lines)
@@ -561,6 +587,12 @@ def gen_items(pack):
     for mob, _, _ in SPAWNERS:
         pack.function("spawner/give_" + mob, [
             "$give @s %s $(count)" % spawner_item_snbt("minecraft:" + mob, mob),
+        ])
+    for target, (snbt, _) in output_targets().items():
+        pack.function(cursor_function_for(target).split(":", 1)[1], [
+            "$item replace entity @s player.cursor with %s $(count)" % snbt,
+            "scoreboard players set #cursor cs.tmp 0",
+            "scoreboard players set #r cs.tmp 0",
         ])
     pack.function("spawner/give", [
         "# Arguments: id (e.g. minecraft:zombie), path (e.g. zombie), count",
