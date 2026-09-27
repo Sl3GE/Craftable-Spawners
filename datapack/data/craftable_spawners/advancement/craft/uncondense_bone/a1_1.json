@@ -1,0 +1,22 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_bone/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "minecraft:bone_meal",
+        "ingredients": [
+          {
+            "items": "minecraft:bone",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_bone/on_a1"
+  }
+}

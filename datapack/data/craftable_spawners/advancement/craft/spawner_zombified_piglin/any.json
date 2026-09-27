@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_zombified_piglin/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/zombified_piglin"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_zombified_piglin/on_n"
+  }
+}

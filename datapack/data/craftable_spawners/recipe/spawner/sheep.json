@@ -1,0 +1,48 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_spawner",
+  "pattern": [
+    "WWW",
+    "MIM",
+    "MMM"
+  ],
+  "key": {
+    "W": "minecraft:white_wool",
+    "M": "minecraft:mutton",
+    "I": "minecraft:iron_bars"
+  },
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:spawner",
+      "minecraft:item_name": {
+        "text": "Sheep Spawner",
+        "color": "gold"
+      },
+      "minecraft:lore": [
+        {
+          "text": "3 Super Condensed White Wool",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "5 Super Condensed Mutton",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "+ Iron Bars",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "parent": "craftable_spawners:craft/condense_magma_cream/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/magma_cream",
+        "ingredients": [
+          {
+            "items": "minecraft:magma_cream",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:magma_cream",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:magma_cream",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:magma_cream",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:magma_cream",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:magma_cream",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_magma_cream/on_a2"
+  }
+}

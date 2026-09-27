@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "craftable_spawners_uncondense",
+  "ingredients": [
+    "minecraft:snow_block"
+  ],
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:snow_block",
+      "minecraft:item_name": {
+        "text": "Uncondense Snow Block",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "Condensed Snow Block -> 9 Snow Block",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "Super Condensed Snow Block -> 9 Condensed Snow Block",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "Plain items are returned unchanged",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_ghast_tear/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/ghast_tear"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_ghast_tear/on_n"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "parent": "craftable_spawners:craft/condense_chicken/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/chicken",
+        "ingredients": [
+          {
+            "items": "minecraft:chicken",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:chicken",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:chicken",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:chicken",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:chicken",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:chicken",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:chicken",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:chicken",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_chicken/on_a1"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "craftable_spawners_uncondense",
+  "ingredients": [
+    "minecraft:nether_star"
+  ],
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:nether_star",
+      "minecraft:item_name": {
+        "text": "Uncondense Nether Star",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "Condensed Nether Star -> 9 Nether Star",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "Plain items are returned unchanged",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

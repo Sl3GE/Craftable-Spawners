@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_condense",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": "minecraft:ghast_tear"
+  },
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:ghast_tear",
+      "minecraft:item_name": {
+        "text": "Condensed Ghast Tear",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "9 Ghast Tear -> Condensed Ghast Tear",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

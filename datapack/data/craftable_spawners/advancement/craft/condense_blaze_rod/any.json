@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_blaze_rod/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/blaze_rod"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_blaze_rod/on_n"
+  }
+}

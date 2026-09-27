@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "craftable_spawners_uncondense",
+  "ingredients": [
+    "minecraft:wither_skeleton_skull"
+  ],
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:wither_skeleton_skull",
+      "minecraft:item_name": {
+        "text": "Uncondense Wither Skeleton Skull",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "Condensed Wither Skeleton Skull -> 9 Wither Skeleton Skull",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "Plain items are returned unchanged",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

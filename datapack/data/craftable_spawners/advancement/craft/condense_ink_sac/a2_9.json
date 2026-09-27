@@ -1,0 +1,70 @@
+{
+  "parent": "craftable_spawners:craft/condense_ink_sac/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/ink_sac",
+        "ingredients": [
+          {
+            "items": "minecraft:ink_sac",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:ink_sac",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:ink_sac",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:ink_sac",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:ink_sac",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:ink_sac",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:ink_sac",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:ink_sac",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:ink_sac",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_ink_sac/on_a2"
+  }
+}

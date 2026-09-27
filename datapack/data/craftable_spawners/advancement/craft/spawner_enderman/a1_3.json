@@ -1,0 +1,34 @@
+{
+  "parent": "craftable_spawners:craft/spawner_enderman/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/enderman",
+        "ingredients": [
+          {
+            "items": "minecraft:ender_pearl",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:ender_pearl",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:ender_pearl",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_enderman/on_a1"
+  }
+}

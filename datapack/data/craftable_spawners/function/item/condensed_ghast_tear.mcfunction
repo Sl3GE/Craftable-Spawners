@@ -1,0 +1,1 @@
+$give @s minecraft:ghast_tear[minecraft:item_name={text:"Condensed Ghast Tear",color:"dark_green"},minecraft:lore=[{text:"Worth 9 Ghast Tear",color:"gray",italic:false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={craftable_spawners:{group:"condensed",tier:"condensed",item:"ghast_tear"}}] $(count)

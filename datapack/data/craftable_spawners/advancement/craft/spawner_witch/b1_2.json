@@ -1,0 +1,28 @@
+{
+  "parent": "craftable_spawners:craft/spawner_witch/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/witch",
+        "ingredients": [
+          {
+            "items": "minecraft:redstone_block",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:redstone_block",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_witch/on_b1"
+  }
+}

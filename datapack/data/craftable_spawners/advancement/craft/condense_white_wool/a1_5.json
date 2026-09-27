@@ -1,0 +1,46 @@
+{
+  "parent": "craftable_spawners:craft/condense_white_wool/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/white_wool",
+        "ingredients": [
+          {
+            "items": "minecraft:white_wool",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:white_wool",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:white_wool",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:white_wool",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:white_wool",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_white_wool/on_a1"
+  }
+}

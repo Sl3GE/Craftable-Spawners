@@ -1,0 +1,40 @@
+{
+  "parent": "craftable_spawners:craft/condense_slime_block/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/slime_block",
+        "ingredients": [
+          {
+            "items": "minecraft:slime_block",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:slime_block",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:slime_block",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:slime_block",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_slime_block/on_a1"
+  }
+}

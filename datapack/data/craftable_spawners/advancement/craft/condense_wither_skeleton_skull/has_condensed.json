@@ -1,0 +1,22 @@
+{
+  "parent": "craftable_spawners:craft/condense_wither_skeleton_skull/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/wither_skeleton_skull",
+        "ingredients": [
+          {
+            "items": "minecraft:wither_skeleton_skull",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{group:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_wither_skeleton_skull/on_h"
+  }
+}

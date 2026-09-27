@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "craftable_spawners_uncondense",
+  "ingredients": [
+    "minecraft:leather"
+  ],
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:leather",
+      "minecraft:item_name": {
+        "text": "Uncondense Leather",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "Condensed Leather -> 9 Leather",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "Super Condensed Leather -> 9 Condensed Leather",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "Plain items are returned unchanged",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

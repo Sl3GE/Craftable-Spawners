@@ -1,0 +1,46 @@
+{
+  "parent": "craftable_spawners:craft/spawner_creeper/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/creeper",
+        "ingredients": [
+          {
+            "items": "minecraft:gunpowder",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:gunpowder",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:gunpowder",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:gunpowder",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:gunpowder",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_creeper/on_a2"
+  }
+}

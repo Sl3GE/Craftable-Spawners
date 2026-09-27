@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_creeper/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/creeper"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_creeper/on_n"
+  }
+}

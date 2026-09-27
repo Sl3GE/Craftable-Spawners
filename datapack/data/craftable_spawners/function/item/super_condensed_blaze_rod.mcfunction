@@ -1,0 +1,1 @@
+$give @s minecraft:blaze_rod[minecraft:item_name={text:"Super Condensed Blaze Rod",color:"dark_blue"},minecraft:lore=[{text:"Worth 81 Blaze Rod",color:"gray",italic:false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={craftable_spawners:{group:"condensed",tier:"super_condensed",item:"blaze_rod"}}] $(count)

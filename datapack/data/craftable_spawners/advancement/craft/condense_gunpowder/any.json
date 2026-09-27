@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_gunpowder/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/gunpowder"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_gunpowder/on_n"
+  }
+}

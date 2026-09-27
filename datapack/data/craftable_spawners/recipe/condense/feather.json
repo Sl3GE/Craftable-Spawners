@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_condense",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": "minecraft:feather"
+  },
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:feather",
+      "minecraft:item_name": {
+        "text": "Condensed Feather",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "9 Feather -> Condensed Feather",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "9 Condensed Feather -> Super Condensed Feather",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

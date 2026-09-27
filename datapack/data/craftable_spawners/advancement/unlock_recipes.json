@@ -1,0 +1,58 @@
+{
+  "criteria": {
+    "tick": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "craftable_spawners:condense/bone",
+      "craftable_spawners:condense/rotten_flesh",
+      "craftable_spawners:condense/blaze_rod",
+      "craftable_spawners:condense/gunpowder",
+      "craftable_spawners:condense/string",
+      "craftable_spawners:condense/ender_pearl",
+      "craftable_spawners:condense/slime_block",
+      "craftable_spawners:condense/magma_cream",
+      "craftable_spawners:condense/ghast_tear",
+      "craftable_spawners:condense/gold_block",
+      "craftable_spawners:condense/nether_star",
+      "craftable_spawners:condense/wither_skeleton_skull",
+      "craftable_spawners:condense/redstone_block",
+      "craftable_spawners:condense/iron_block",
+      "craftable_spawners:condense/leather",
+      "craftable_spawners:condense/beef",
+      "craftable_spawners:condense/carved_pumpkin",
+      "craftable_spawners:condense/snow_block",
+      "craftable_spawners:condense/white_wool",
+      "craftable_spawners:condense/mutton",
+      "craftable_spawners:condense/porkchop",
+      "craftable_spawners:condense/ink_sac",
+      "craftable_spawners:condense/chicken",
+      "craftable_spawners:condense/feather",
+      "craftable_spawners:condense/emerald_block",
+      "craftable_spawners:spawner/skeleton",
+      "craftable_spawners:spawner/zombie",
+      "craftable_spawners:spawner/blaze",
+      "craftable_spawners:spawner/creeper",
+      "craftable_spawners:spawner/spider",
+      "craftable_spawners:spawner/enderman",
+      "craftable_spawners:spawner/slime",
+      "craftable_spawners:spawner/magma_cube",
+      "craftable_spawners:spawner/ghast",
+      "craftable_spawners:spawner/zombified_piglin",
+      "craftable_spawners:spawner/wither",
+      "craftable_spawners:spawner/wither_skeleton",
+      "craftable_spawners:spawner/witch",
+      "craftable_spawners:spawner/iron_golem",
+      "craftable_spawners:spawner/cow",
+      "craftable_spawners:spawner/snow_golem",
+      "craftable_spawners:spawner/sheep",
+      "craftable_spawners:spawner/pig",
+      "craftable_spawners:spawner/horse",
+      "craftable_spawners:spawner/squid",
+      "craftable_spawners:spawner/chicken",
+      "craftable_spawners:spawner/villager"
+    ]
+  }
+}

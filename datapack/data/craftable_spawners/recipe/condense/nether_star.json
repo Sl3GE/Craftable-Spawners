@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_condense",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": "minecraft:nether_star"
+  },
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:nether_star",
+      "minecraft:item_name": {
+        "text": "Condensed Nether Star",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "9 Nether Star -> Condensed Nether Star",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

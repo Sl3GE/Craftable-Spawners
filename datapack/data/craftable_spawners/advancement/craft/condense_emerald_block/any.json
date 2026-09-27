@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_emerald_block/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/emerald_block"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_emerald_block/on_n"
+  }
+}

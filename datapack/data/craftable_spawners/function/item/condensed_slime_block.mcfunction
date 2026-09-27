@@ -1,0 +1,1 @@
+$give @s minecraft:slime_block[minecraft:item_name={text:"Condensed Slime Block",color:"dark_green"},minecraft:lore=[{text:"Worth 9 Slime Block",color:"gray",italic:false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={craftable_spawners:{group:"condensed",tier:"condensed",item:"slime_block"}}] $(count)

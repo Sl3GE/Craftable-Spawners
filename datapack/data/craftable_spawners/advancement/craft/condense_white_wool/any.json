@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_white_wool/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/white_wool"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_white_wool/on_n"
+  }
+}

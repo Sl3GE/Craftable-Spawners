@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_condense",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": "minecraft:mutton"
+  },
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:mutton",
+      "minecraft:item_name": {
+        "text": "Condensed Mutton",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "9 Mutton -> Condensed Mutton",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "9 Condensed Mutton -> Super Condensed Mutton",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

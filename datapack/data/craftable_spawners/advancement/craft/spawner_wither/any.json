@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_wither/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/wither"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_wither/on_n"
+  }
+}

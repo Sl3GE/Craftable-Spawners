@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "craftable_spawners_uncondense",
+  "ingredients": [
+    "minecraft:gunpowder"
+  ],
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:gunpowder",
+      "minecraft:item_name": {
+        "text": "Uncondense Gunpowder",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "Condensed Gunpowder -> 9 Gunpowder",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "Super Condensed Gunpowder -> 9 Condensed Gunpowder",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "Plain items are returned unchanged",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

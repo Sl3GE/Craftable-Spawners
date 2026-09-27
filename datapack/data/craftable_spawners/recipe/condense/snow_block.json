@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_condense",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": "minecraft:snow_block"
+  },
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:snow_block",
+      "minecraft:item_name": {
+        "text": "Condensed Snow Block",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "9 Snow Block -> Condensed Snow Block",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "9 Condensed Snow Block -> Super Condensed Snow Block",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

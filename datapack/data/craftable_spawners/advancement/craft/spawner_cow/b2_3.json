@@ -1,0 +1,34 @@
+{
+  "parent": "craftable_spawners:craft/spawner_cow/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/cow",
+        "ingredients": [
+          {
+            "items": "minecraft:beef",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:beef",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:beef",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_cow/on_b2"
+  }
+}

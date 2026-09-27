@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_ender_pearl/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/ender_pearl"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_ender_pearl/on_n"
+  }
+}

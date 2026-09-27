@@ -1,0 +1,41 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_condense",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": "minecraft:ink_sac"
+  },
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:ink_sac",
+      "minecraft:item_name": {
+        "text": "Condensed Ink Sac",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "9 Ink Sac -> Condensed Ink Sac",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "9 Condensed Ink Sac -> Super Condensed Ink Sac",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

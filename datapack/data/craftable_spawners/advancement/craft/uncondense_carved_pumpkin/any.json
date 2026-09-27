@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_carved_pumpkin/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/carved_pumpkin"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_carved_pumpkin/on_n"
+  }
+}

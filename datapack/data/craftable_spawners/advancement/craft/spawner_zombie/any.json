@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_zombie/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/zombie"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_zombie/on_n"
+  }
+}

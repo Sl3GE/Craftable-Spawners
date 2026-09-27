@@ -1,0 +1,34 @@
+{
+  "parent": "craftable_spawners:craft/condense_carved_pumpkin/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/carved_pumpkin",
+        "ingredients": [
+          {
+            "items": "minecraft:carved_pumpkin",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:carved_pumpkin",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:carved_pumpkin",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_carved_pumpkin/on_a2"
+  }
+}
