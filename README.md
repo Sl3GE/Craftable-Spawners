@@ -22,11 +22,21 @@ source is still in `src/` for reference).
 * **Silk Touch** mining a spawner drops it with its mob kept. Placing it
   restores the mob, even for players who are not operators.
 
-While crafting, the result slot shows a preview item. When you take it, it is
-replaced with the real result on the next tick. If the grid held the wrong
+Condensing shows the real Condensed item in the result slot, so clicking or
+shift-clicking it stacks exactly like a vanilla craft. Vanilla recipes only
+check item types, so the result slot can't tell the tiers apart:
+
+* Condensing 9 Condensed items shows a Condensed item, but you receive a
+  Super Condensed one.
+* Un-condensing shows a single plain item, but a Condensed item gives 9.
+* Spawner recipes show a preview spawner that turns into the real one.
+
+The swap happens in the same instant as the craft. If the grid held the wrong
 items (for example plain bones in a spawner recipe), the craft is undone and
-every ingredient is given back. Crafter blocks produce only the preview item,
-so use a crafting table.
+every ingredient is given back. Crafter blocks can condense plain items. Don't
+feed them Condensed items, because Crafters can't tell the tiers apart and the
+extra value is lost. They also can't make spawners or un-condense, so use a
+crafting table for those.
 
 ### Condensable items
 

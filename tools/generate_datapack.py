@@ -6,13 +6,17 @@ Run from anywhere:  python3 tools/generate_datapack.py [--zip]
 Vanilla crafting recipes can only match ingredients by item type, so the
 condensed items (which are ordinary items carrying custom data) cannot be
 required directly by a recipe. Instead every recipe that involves them is
-validated after the fact:
+validated during the craft:
 
-* Each custom recipe outputs a harmless placeholder item.
-* Hidden advancements using the `minecraft:recipe_crafted` trigger count, for
-  every craft, how many condensed / super condensed items were in the grid.
-* On the next tick the counts are turned into the real result (or an exact
-  refund of the ingredients) and the placeholders are deleted.
+* Condensing outputs the real condensed item and un-condensing a single plain
+  item, so results stack like vanilla ones and are harmless in a Crafter.
+  Spawner recipes output a placeholder item (a Crafter must not make spawners).
+* Hidden advancements using the `minecraft:recipe_crafted` trigger count how
+  many condensed / super condensed items were in the grid, then lock the
+  recipe again.
+* The game unlocks the recipe right after the craft, which fires a
+  `minecraft:recipe_unlocked` advancement. Its function swaps the result for
+  the real one (or an exact refund of the ingredients) in the same tick.
 
 Un-condensing items that already have a vanilla single-item recipe (bone,
 blaze rod, iron block, ...) keeps the vanilla output and tops it up with the
@@ -147,23 +151,32 @@ def mob_title(mob):
     return mob.replace("_", " ").title()
 
 
-def custom_data_snbt(item, tier):
-    return '{%s:{group:"condensed",tier:"%s",item:"%s"}}' % (NS, TIER_KIND[tier], item)
+def tier_components(item, tier):
+    """Components of a condensed or super condensed item. Recipe results and /give
+    both use this, so crafted and given items are identical and stack together."""
+    return {
+        "minecraft:item_name": {"text": display_name(item, tier), "color": TIER_COLOR[tier]},
+        "minecraft:lore": [
+            {"text": "Worth %d %s" % (TIER_WORTH[tier], ITEM_NAMES[item]), "color": "gray", "italic": False},
+        ],
+        "minecraft:enchantment_glint_override": True,
+        "minecraft:custom_data": {NS: {"group": "condensed", "tier": TIER_KIND[tier], "item": item}},
+    }
 
 
 def tier_item_snbt(item, tier):
     """Item stack argument (for /give) of a plain, condensed or super condensed item."""
     if tier == 0:
         return mc(item)
-    name = display_name(item, tier)
-    worth = "Worth %d %s" % (TIER_WORTH[tier], ITEM_NAMES[item])
-    components = [
-        'minecraft:item_name={text:"%s",color:"%s"}' % (name, TIER_COLOR[tier]),
-        'minecraft:lore=[{text:"%s",color:"gray",italic:false}]' % worth,
-        "minecraft:enchantment_glint_override=true",
-        "minecraft:custom_data=" + custom_data_snbt(item, tier),
-    ]
+    components = ["%s=%s" % (k, json.dumps(v, separators=(",", ":"))) for k, v in tier_components(item, tier).items()]
     return "%s[%s]" % (mc(item), ",".join(components))
+
+
+def tier_item_predicate_arg(item, tier):
+    """Item predicate argument (for clear / execute if items) matching exactly one variant."""
+    if tier == 0:
+        return "%s[!minecraft:custom_data]" % mc(item)
+    return '%s[minecraft:custom_data~{%s:{tier:"%s"}}]' % (mc(item), NS, TIER_KIND[tier])
 
 
 def spawner_components_snbt(id_expr, path_expr):
@@ -338,6 +351,26 @@ class Recipe:
                 add("vanilla:" + item, count * failed)
         return {k: v for k, v in out.items() if not v.is_zero()}
 
+    @property
+    def result(self):
+        """(target, count) the crafting grid itself hands out, None for vanilla recipes."""
+        if self.kind == "condense":
+            return tier_item_id(self.item, C), 1
+        if self.kind == "uncondense":
+            return tier_item_id(self.item, 0), 1
+        if self.kind == "spawner":
+            return "placeholder", 1
+        return None
+
+    def resolution(self):
+        """{target: Expr} the resolver adds (or removes, when negative) after one craft
+        so that the grid's result plus these changes equals outputs()."""
+        out = self.outputs()
+        if self.result:
+            target, count = self.result
+            out[target] = out.get(target, Expr()) - count * V("n")
+        return {k: v for k, v in out.items() if not v.is_zero()}
+
     def counters_used(self):
         used = set()
         if self.kind != "uncondense_vanilla":
@@ -422,7 +455,32 @@ class Pack:
 
 # --------------------------------------------------------------------------- generation
 
+# Vanilla recipes that are re-locked and re-unlocked on every condensed craft
+# (see gen_advancements); they are overridden only to silence the unlock toast.
+VANILLA_RECIPE_FILES = {
+    "minecraft:bone_meal": {"group": "bonemeal", "ingredients": ["minecraft:bone"],
+                            "result": {"count": 3, "id": "minecraft:bone_meal"}},
+    "minecraft:blaze_powder": {"ingredients": ["minecraft:blaze_rod"],
+                               "result": {"count": 2, "id": "minecraft:blaze_powder"}},
+    "minecraft:black_dye": {"group": "black_dye", "ingredients": ["minecraft:ink_sac"],
+                            "result": {"id": "minecraft:black_dye"}},
+    "minecraft:slime_ball": {"ingredients": ["minecraft:slime_block"],
+                             "result": {"count": 9, "id": "minecraft:slime_ball"}},
+    "minecraft:redstone": {"category": "redstone", "ingredients": ["minecraft:redstone_block"],
+                           "result": {"count": 9, "id": "minecraft:redstone"}},
+    "minecraft:iron_ingot_from_iron_block": {"group": "iron_ingot", "ingredients": ["minecraft:iron_block"],
+                                             "result": {"count": 9, "id": "minecraft:iron_ingot"}},
+    "minecraft:gold_ingot_from_gold_block": {"group": "gold_ingot", "ingredients": ["minecraft:gold_block"],
+                                             "result": {"count": 9, "id": "minecraft:gold_ingot"}},
+    "minecraft:emerald": {"ingredients": ["minecraft:emerald_block"],
+                          "result": {"count": 9, "id": "minecraft:emerald"}},
+}
+
+
 def gen_recipes(pack, recipes):
+    for recipe_id, body in VANILLA_RECIPE_FILES.items():
+        pack.json("data/minecraft/recipe/%s.json" % recipe_id.split(":", 1)[1],
+                  dict({"type": "minecraft:crafting_shapeless"}, **body, show_notification=False))
     for r in recipes:
         if r.kind == "condense":
             x = r.item
@@ -430,26 +488,22 @@ def gen_recipes(pack, recipes):
                 "type": "minecraft:crafting_shaped",
                 "category": "misc",
                 "group": NS + "_condense",
+                "show_notification": False,
                 "pattern": ["XXX", "XXX", "XXX"],
                 "key": {"X": mc(x)},
-                "result": placeholder(
-                    mc(x), display_name(x, C), TIER_COLOR[C],
-                    ["9 %s -> %s" % (ITEM_NAMES[x], display_name(x, C))]
-                    + (["9 %s -> %s" % (display_name(x, C), display_name(x, S))] if HAS_SUPER[x] else []),
-                ),
+                "result": {"id": mc(x), "components": tier_components(x, C)},
             })
         elif r.kind == "uncondense":
+            # Outputs a single plain item: a harmless 1:1 swap for plain input
+            # (also in a Crafter); condensed input is topped up by the resolver.
             x = r.item
-            lore = ["%s -> 9 %s" % (display_name(x, C), ITEM_NAMES[x])]
-            if HAS_SUPER[x]:
-                lore.append("%s -> 9 %s" % (display_name(x, S), display_name(x, C)))
-            lore.append("Plain items are returned unchanged")
             pack.recipe("uncondense/" + x, {
                 "type": "minecraft:crafting_shapeless",
                 "category": "misc",
                 "group": NS + "_uncondense",
+                "show_notification": False,
                 "ingredients": [mc(x)],
-                "result": placeholder(mc(x), "Uncondense " + ITEM_NAMES[x], "dark_green", lore),
+                "result": {"id": mc(x)},
             })
         elif r.kind == "spawner":
             key = {}
@@ -465,6 +519,7 @@ def gen_recipes(pack, recipes):
                 "type": "minecraft:crafting_shaped",
                 "category": "misc",
                 "group": NS + "_spawner",
+                "show_notification": False,
                 "pattern": r.pattern,
                 "key": key,
                 "result": placeholder("minecraft:spawner", mob_title(r.mob) + " Spawner", "gold", lore),
@@ -507,13 +562,28 @@ def gen_advancements(pack, recipes):
                 for k in range(1, cls.slots + 1):
                     child("%s_%d" % (counter, k), [tier_predicate(cls.item, tier)] * k, counter)
 
+        # Locking the recipe makes the game unlock it again right after all
+        # recipe_crafted rewards of this craft ran, which triggers the `end`
+        # advancement while the result is already on the cursor / in the inventory.
         for counter in sorted(used):
             pack.function(r.adv_dir + "/on_" + counter, [
-                "execute unless score @s cs.recipe matches %d run function %s:resolve/dispatch" % (r.index, NS),
+                "execute unless score @s cs.recipe matches %d run function %s:reset" % (r.index, NS),
                 "scoreboard players set @s cs.recipe %d" % r.index,
                 "scoreboard players add @s cs.%s 1" % counter,
                 "advancement revoke @s from " + root,
+                "recipe take @s " + r.recipe_id,
             ])
+        end = "%s:%s/end" % (NS, r.adv_dir)
+        pack.advancement(r.adv_dir + "/end", {
+            "criteria": {"unlocked": {"trigger": "minecraft:recipe_unlocked", "conditions": {"recipes": r.recipe_id}}},
+            "rewards": {"function": end},
+        })
+        pack.function(r.adv_dir + "/end", [
+            "advancement revoke @s only " + end,
+            "execute unless score @s cs.recipe matches %d run return fail" % r.index,
+            "function %s:resolve/%s" % (NS, r.key),
+            "function %s:reset" % NS,
+        ])
 
 
 MAX_STACK = {"ender_pearl": 16}
@@ -543,17 +613,110 @@ def cursor_function_for(target):
     return "%s:cursor/%s" % (NS, target.replace(":", "_"))
 
 
+PLACEHOLDER_PREDICATE = '%s[minecraft:custom_data~{%s:{group:"placeholder"}}]' % (PLACEHOLDER_ITEM, NS)
+
+
+def take_targets():
+    """{target: (item predicate argument, tracks debt)} for crafting results the resolver may take back."""
+    targets = {"placeholder": (PLACEHOLDER_PREDICATE, False)}
+    for item, _, has_super in CONDENSED:
+        for tier in [0, C] + ([S] if has_super else []):
+            targets[tier_item_id(item, tier)] = (tier_item_predicate_arg(item, tier), True)
+    return targets
+
+
+# Hand out spawners first so they are the item that lands on the cursor.
+OUTPUT_ORDER = ["spawner:", "super_condensed_", "condensed_"]
+
+
+def output_priority(target):
+    for i, prefix in enumerate(OUTPUT_ORDER):
+        if target.startswith(prefix):
+            return i, target
+    return len(OUTPUT_ORDER), target
+
+
+def gen_take(pack):
+    debt_dispatch = []
+    for index, (target, (predicate, debt)) in enumerate(sorted(take_targets().items()), start=1):
+        lines = [
+            "# Removes -#r %s, from the cursor first, then from the inventory." % target,
+            "scoreboard players set #want cs.tmp 0",
+            "scoreboard players operation #want cs.tmp -= #r cs.tmp",
+            "execute store result score #k cs.tmp if items entity @s player.cursor " + predicate,
+            "scoreboard players operation #k cs.tmp < #want cs.tmp",
+            "scoreboard players operation #want cs.tmp -= #k cs.tmp",
+            "execute if score #k cs.tmp matches 1.. run scoreboard players set #cursor cs.tmp 1",
+            "execute store result storage %s:tmp take.k int -1 run scoreboard players get #k cs.tmp" % NS,
+            "execute if score #k cs.tmp matches 1.. run function %s:take/cursor with storage %s:tmp take" % (NS, NS),
+            "execute if score #want cs.tmp matches ..0 run return 0",
+            "execute store result storage %s:tmp take.n int 1 run scoreboard players get #want cs.tmp" % NS,
+            "execute store result score #k cs.tmp run function %s:take/clear/%s with storage %s:tmp take" % (NS, target, NS),
+            "scoreboard players operation #want cs.tmp -= #k cs.tmp",
+        ]
+        if debt:
+            # A result thrown with Q is dropped only after this runs.
+            lines += [
+                "execute if score #want cs.tmp matches 1.. run scoreboard players operation @s cs.debt += #want cs.tmp",
+                "execute if score #want cs.tmp matches 1.. run scoreboard players set @s cs.debt_item %d" % index,
+            ]
+            debt_dispatch.append("execute if score @s cs.debt_item matches %d run function %s:debt/%s" % (index, NS, target))
+            pack.function("debt/" + target, [
+                "execute as @e[type=minecraft:item,distance=..8] if items entity @s contents %s run function %s:debt/reduce"
+                % (predicate, NS),
+            ])
+        pack.function("take/" + target, lines)
+        pack.function("take/clear/" + target, ["$return run clear @s %s $(n)" % predicate])
+    pack.function("take/cursor", [
+        '$item modify entity @s player.cursor {type:"minecraft:set_count",count:$(k),add:true}',
+    ])
+
+    pack.function("debt/dispatch", [
+        "# Removes crafted items that were thrown out of the result slot with Q.",
+        "scoreboard players operation #debt cs.tmp = @s cs.debt",
+        "data modify storage %s:tmp debt.uuid set from entity @s UUID" % NS,
+    ] + debt_dispatch + [
+        "scoreboard players set @s cs.debt 0",
+        "scoreboard players set @s cs.debt_item 0",
+    ])
+    pack.function("debt/reduce", [
+        "execute if score #debt cs.tmp matches ..0 run return fail",
+        "execute unless data entity @s Thrower run return fail",
+        "execute store result score #k cs.tmp run data get entity @s Age",
+        "execute if score #k cs.tmp matches 3.. run return fail",
+        "data modify storage %s:tmp debt.cmp set from storage %s:tmp debt.uuid" % (NS, NS),
+        "execute store success score #k cs.tmp run data modify storage %s:tmp debt.cmp set from entity @s Thrower" % NS,
+        "execute if score #k cs.tmp matches 1 run return fail",
+        "execute store result score #k cs.tmp run data get entity @s Item.count",
+        "execute if score #k cs.tmp <= #debt cs.tmp run return run function %s:debt/kill" % NS,
+        "scoreboard players operation #k cs.tmp -= #debt cs.tmp",
+        "execute store result entity @s Item.count int 1 run scoreboard players get #k cs.tmp",
+        "scoreboard players set #debt cs.tmp 0",
+    ])
+    pack.function("debt/kill", [
+        "scoreboard players operation #debt cs.tmp -= #k cs.tmp",
+        "kill @s",
+    ])
+
+
 def gen_resolvers(pack, recipes):
     constants = set()
-    dispatch = []
     targets = output_targets()
-    placeholder_on_cursor = 'player.cursor %s[minecraft:custom_data~{%s:{group:"placeholder"}}]' % (PLACEHOLDER_ITEM, NS)
     for r in recipes:
-        lines = ["# %s (%s)" % (r.recipe_id, r.kind)]
-        # A result taken with a click is on the cursor; the first output goes there too.
+        lines = ["# %s (%s): runs right after one craft" % (r.recipe_id, r.kind)]
+        # #cursor = the result was picked up with the cursor and the cursor is now
+        # empty, so the first output goes there (like a vanilla craft would).
         lines.append("scoreboard players set #cursor cs.tmp 0")
-        lines.append("execute if items entity @s %s run scoreboard players set #cursor cs.tmp 1" % placeholder_on_cursor)
-        for target, expr in sorted(r.outputs().items(), key=lambda kv: (not kv[0].startswith("spawner:"), kv[0])):
+        resolution = r.resolution()
+        if r.result and r.result[0] in resolution:
+            expr = resolution[r.result[0]]
+            constants |= expr.constants()
+            lines += expr.commands()
+            lines.append("execute if score #r cs.tmp matches ..-1 run function %s:take/%s" % (NS, r.result[0]))
+            lines.append("execute if items entity @s player.cursor * run scoreboard players set #cursor cs.tmp 0")
+        for target, expr in sorted(resolution.items(), key=lambda kv: output_priority(kv[0])):
+            if target == "placeholder":
+                continue
             constants |= expr.constants()
             lines += expr.commands()
             lines.append("execute store result storage %s:tmp give.count int 1 run scoreboard players get #r cs.tmp" % NS)
@@ -562,12 +725,9 @@ def gen_resolvers(pack, recipes):
             lines.append("execute if score #r cs.tmp matches 1.. run function %s with storage %s:tmp give"
                          % (give_function_for(target), NS))
         pack.function("resolve/" + r.key, lines)
-        dispatch.append("execute if score @s cs.recipe matches %d run function %s:resolve/%s" % (r.index, NS, r.key))
-    dispatch.append("scoreboard players set @s cs.recipe 0")
-    dispatch += ["scoreboard players set @s cs.%s 0" % c for c in COUNTERS]
-    pack.function("resolve/dispatch", [
-        "# Turns the crafts counted since the last resolve into real items.",
-    ] + dispatch)
+    pack.function("reset", [
+        "scoreboard players set @s cs.recipe 0",
+    ] + ["scoreboard players set @s cs.%s 0" % c for c in COUNTERS])
     return constants
 
 
@@ -706,21 +866,24 @@ def gen_spawner_mechanics(pack):
 
 
 def gen_core(pack, recipes, constants):
-    objectives = ["cs.recipe", "cs.tmp"] + ["cs." + c for c in COUNTERS]
+    objectives = ["cs.recipe", "cs.tmp", "cs.debt", "cs.debt_item"] + ["cs." + c for c in COUNTERS]
     load = ["scoreboard objectives add %s dummy" % o for o in objectives]
     load.append("scoreboard objectives add cs.mined minecraft.mined:minecraft.spawner")
     load += ["scoreboard players set #%d cs.tmp %d" % (c, c) for c in sorted(constants)]
     pack.function("load", load)
 
     pack.function("tick", [
-        "execute as @a[scores={cs.recipe=1..}] run function %s:resolve/dispatch" % NS,
-        'clear @a %s[minecraft:custom_data~{%s:{group:"placeholder"}}]' % (PLACEHOLDER_ITEM, NS),
+        "execute as @a[scores={cs.recipe=1..}] run function %s:reset" % NS,
+        "execute as @a[scores={cs.debt=1..}] at @s run function %s:debt/dispatch" % NS,
+        "clear @a " + PLACEHOLDER_PREDICATE,
         "execute as @e[type=minecraft:item,tag=!cs.seen] run function %s:drop/check" % NS,
         "execute as @a[scores={cs.mined=1..}] run function %s:spawner/mined" % NS,
     ])
 
     uninstall = ["scoreboard objectives remove %s" % o for o in objectives + ["cs.mined"]]
     uninstall.append("data remove storage %s:tmp give" % NS)
+    uninstall.append("data remove storage %s:tmp take" % NS)
+    uninstall.append("data remove storage %s:tmp debt" % NS)
     uninstall.append('tellraw @s {text:"Craftable Spawners scoreboards removed. Disable the data pack next.",color:"gold"}')
     pack.function("uninstall", uninstall)
 
@@ -744,6 +907,7 @@ def generate(out=OUT):
     gen_recipes(pack, recipes)
     gen_advancements(pack, recipes)
     constants = gen_resolvers(pack, recipes)
+    gen_take(pack)
     gen_items(pack)
     gen_spawner_mechanics(pack)
     gen_core(pack, recipes, constants)

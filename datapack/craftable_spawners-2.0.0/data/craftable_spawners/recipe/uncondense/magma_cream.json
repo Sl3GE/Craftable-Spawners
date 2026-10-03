@@ -2,40 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "group": "craftable_spawners_uncondense",
+  "show_notification": false,
   "ingredients": [
     "minecraft:magma_cream"
   ],
   "result": {
-    "id": "minecraft:command_block",
-    "components": {
-      "minecraft:item_model": "minecraft:magma_cream",
-      "minecraft:item_name": {
-        "text": "Uncondense Magma Cream",
-        "color": "dark_green"
-      },
-      "minecraft:lore": [
-        {
-          "text": "Condensed Magma Cream -> 9 Magma Cream",
-          "color": "gray",
-          "italic": false
-        },
-        {
-          "text": "Super Condensed Magma Cream -> 9 Condensed Magma Cream",
-          "color": "gray",
-          "italic": false
-        },
-        {
-          "text": "Plain items are returned unchanged",
-          "color": "gray",
-          "italic": false
-        }
-      ],
-      "minecraft:enchantment_glint_override": true,
-      "minecraft:custom_data": {
-        "craftable_spawners": {
-          "group": "placeholder"
-        }
-      }
-    }
+    "id": "minecraft:magma_cream"
   }
 }

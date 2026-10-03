@@ -1,10 +1,16 @@
-# craftable_spawners:condense/iron_block (condense)
+# craftable_spawners:condense/iron_block (condense): runs right after one craft
 scoreboard players set #cursor cs.tmp 0
-execute if items entity @s player.cursor minecraft:command_block[minecraft:custom_data~{craftable_spawners:{group:"placeholder"}}] run scoreboard players set #cursor cs.tmp 1
 scoreboard players set #r cs.tmp 0
 scoreboard players operation #r cs.tmp += @s cs.a1
 scoreboard players operation #r cs.tmp -= @s cs.h
-scoreboard players operation #r cs.tmp += @s cs.n
+scoreboard players operation #t cs.tmp = @s cs.v
+scoreboard players operation #t cs.tmp *= #9 cs.tmp
+scoreboard players operation #r cs.tmp -= #t cs.tmp
+execute if score #r cs.tmp matches ..-1 run function craftable_spawners:take/condensed_iron_block
+execute if items entity @s player.cursor * run scoreboard players set #cursor cs.tmp 0
+scoreboard players set #r cs.tmp 0
+scoreboard players operation #r cs.tmp += @s cs.a1
+scoreboard players operation #r cs.tmp -= @s cs.h
 scoreboard players operation #t cs.tmp = @s cs.v
 scoreboard players operation #t cs.tmp *= #9 cs.tmp
 scoreboard players operation #r cs.tmp -= #t cs.tmp

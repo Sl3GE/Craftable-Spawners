@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "unlocked": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/blaze_rod"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_blaze_rod/end"
+  }
+}

@@ -2,40 +2,11 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "group": "craftable_spawners_uncondense",
+  "show_notification": false,
   "ingredients": [
     "minecraft:chicken"
   ],
   "result": {
-    "id": "minecraft:command_block",
-    "components": {
-      "minecraft:item_model": "minecraft:chicken",
-      "minecraft:item_name": {
-        "text": "Uncondense Chicken",
-        "color": "dark_green"
-      },
-      "minecraft:lore": [
-        {
-          "text": "Condensed Chicken -> 9 Chicken",
-          "color": "gray",
-          "italic": false
-        },
-        {
-          "text": "Super Condensed Chicken -> 9 Condensed Chicken",
-          "color": "gray",
-          "italic": false
-        },
-        {
-          "text": "Plain items are returned unchanged",
-          "color": "gray",
-          "italic": false
-        }
-      ],
-      "minecraft:enchantment_glint_override": true,
-      "minecraft:custom_data": {
-        "craftable_spawners": {
-          "group": "placeholder"
-        }
-      }
-    }
+    "id": "minecraft:chicken"
   }
 }

@@ -1,6 +1,5 @@
-# minecraft:emerald (uncondense_vanilla)
+# minecraft:emerald (uncondense_vanilla): runs right after one craft
 scoreboard players set #cursor cs.tmp 0
-execute if items entity @s player.cursor minecraft:command_block[minecraft:custom_data~{craftable_spawners:{group:"placeholder"}}] run scoreboard players set #cursor cs.tmp 1
 scoreboard players set #r cs.tmp 0
 scoreboard players operation #t cs.tmp = @s cs.a1
 scoreboard players operation #t cs.tmp *= #8 cs.tmp

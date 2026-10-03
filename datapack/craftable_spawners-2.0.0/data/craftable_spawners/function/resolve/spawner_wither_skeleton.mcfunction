@@ -1,6 +1,9 @@
-# craftable_spawners:spawner/wither_skeleton (spawner)
+# craftable_spawners:spawner/wither_skeleton (spawner): runs right after one craft
 scoreboard players set #cursor cs.tmp 0
-execute if items entity @s player.cursor minecraft:command_block[minecraft:custom_data~{craftable_spawners:{group:"placeholder"}}] run scoreboard players set #cursor cs.tmp 1
+scoreboard players set #r cs.tmp 0
+scoreboard players operation #r cs.tmp -= @s cs.n
+execute if score #r cs.tmp matches ..-1 run function craftable_spawners:take/placeholder
+execute if items entity @s player.cursor * run scoreboard players set #cursor cs.tmp 0
 scoreboard players set #r cs.tmp 0
 scoreboard players operation #r cs.tmp += @s cs.v
 execute store result storage craftable_spawners:tmp give.count int 1 run scoreboard players get #r cs.tmp

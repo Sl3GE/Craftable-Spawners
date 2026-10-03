@@ -4,7 +4,7 @@
 For random crafting grids (plain, condensed and super condensed items mixed)
 this evaluates which generated `recipe_crafted` advancements would fire, feeds
 the resulting counters into the resolver expressions and checks that the
-player ends up with exactly the expected items.
+recipe result plus the resolver's changes is exactly the expected items.
 """
 
 import json
@@ -57,7 +57,7 @@ def load_advancements(root, recipe):
     folder = root / "data" / g.NS / "advancement" / recipe.adv_dir
     for path in folder.glob("*.json"):
         data = json.loads(path.read_text())
-        if "rewards" not in data:
+        if "crafted" not in data["criteria"]:
             continue
         counter = data["rewards"]["function"].rsplit("on_", 1)[1]
         advs.append((data["criteria"]["crafted"]["conditions"], counter))
@@ -161,7 +161,7 @@ def run_scoreboard(commands, player, fake):
 
 def check_commands(recipes, rng):
     for r in recipes:
-        for target, expr in r.outputs().items():
+        for target, expr in r.resolution().items():
             for _ in range(50):
                 counters = {c: rng.randint(0, 600) for c in g.COUNTERS}
                 fake = {"#%d" % c: c for c in expr.constants()}
@@ -178,22 +178,26 @@ def main():
         checked = 0
         for r in recipes:
             advs = load_advancements(root, r)
-            outputs = r.outputs()
+            resolution = r.resolution()
             for batch in range(400):
+                # Every craft (also each one of a shift-click) is resolved on its own.
                 counters = {c: 0 for c in g.COUNTERS}
-                expected = {}
                 bias = rng.choice([1.0, 0.95, 0.8, 0.3])
-                for _ in range(rng.randint(1, 5)):  # shift-click crafts within one tick
-                    cells = random_cells(r, rng, bias)
-                    grid = [item_data(item, tier) for _, item, tier in cells]
-                    grid += [None] * (9 - len(grid))
-                    rng.shuffle(grid)
-                    for conditions, counter in advs:
-                        if trigger_matches(conditions, grid):
-                            counters[counter] += 1
-                    for k, n in expected_outcome(r, cells).items():
-                        expected[k] = expected.get(k, 0) + n
-                actual = {k: e.evaluate(counters) for k, e in outputs.items()}
+                cells = random_cells(r, rng, bias)
+                grid = [item_data(item, tier) for _, item, tier in cells]
+                grid += [None] * (9 - len(grid))
+                rng.shuffle(grid)
+                for conditions, counter in advs:
+                    if trigger_matches(conditions, grid):
+                        counters[counter] += 1
+                expected = expected_outcome(r, cells)
+                actual = {k: e.evaluate(counters) for k, e in resolution.items()}
+                if r.result:
+                    target, count = r.result
+                    # Only what this craft produced can be taken back.
+                    assert actual.get(target, 0) >= -count, (r.key, counters)
+                    actual[target] = actual.get(target, 0) + count
+                assert all(n >= 0 for k, n in actual.items() if not r.result or k != r.result[0]), (r.key, actual)
                 actual = {k: n for k, n in actual.items() if n}
                 checked += 1
                 if actual != expected:

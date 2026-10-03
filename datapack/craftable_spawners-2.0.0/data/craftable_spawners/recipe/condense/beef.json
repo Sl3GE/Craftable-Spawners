@@ -2,6 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "craftable_spawners_condense",
+  "show_notification": false,
   "pattern": [
     "XXX",
     "XXX",
@@ -11,21 +12,15 @@
     "X": "minecraft:beef"
   },
   "result": {
-    "id": "minecraft:command_block",
+    "id": "minecraft:beef",
     "components": {
-      "minecraft:item_model": "minecraft:beef",
       "minecraft:item_name": {
         "text": "Condensed Beef",
         "color": "dark_green"
       },
       "minecraft:lore": [
         {
-          "text": "9 Beef -> Condensed Beef",
-          "color": "gray",
-          "italic": false
-        },
-        {
-          "text": "9 Condensed Beef -> Super Condensed Beef",
+          "text": "Worth 9 Beef",
           "color": "gray",
           "italic": false
         }
@@ -33,7 +28,9 @@
       "minecraft:enchantment_glint_override": true,
       "minecraft:custom_data": {
         "craftable_spawners": {
-          "group": "placeholder"
+          "group": "condensed",
+          "tier": "condensed",
+          "item": "beef"
         }
       }
     }

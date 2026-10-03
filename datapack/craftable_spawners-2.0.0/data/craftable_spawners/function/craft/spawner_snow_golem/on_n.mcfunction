@@ -1,4 +1,5 @@
-execute unless score @s cs.recipe matches 66 run function craftable_spawners:resolve/dispatch
+execute unless score @s cs.recipe matches 66 run function craftable_spawners:reset
 scoreboard players set @s cs.recipe 66
 scoreboard players add @s cs.n 1
 advancement revoke @s from craftable_spawners:craft/spawner_snow_golem/root
+recipe take @s craftable_spawners:spawner/snow_golem

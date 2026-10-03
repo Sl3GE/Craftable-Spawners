@@ -1,5 +1,7 @@
 scoreboard objectives add cs.recipe dummy
 scoreboard objectives add cs.tmp dummy
+scoreboard objectives add cs.debt dummy
+scoreboard objectives add cs.debt_item dummy
 scoreboard objectives add cs.n dummy
 scoreboard objectives add cs.h dummy
 scoreboard objectives add cs.v dummy

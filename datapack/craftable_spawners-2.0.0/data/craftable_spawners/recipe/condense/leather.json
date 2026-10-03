@@ -2,6 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "craftable_spawners_condense",
+  "show_notification": false,
   "pattern": [
     "XXX",
     "XXX",
@@ -11,21 +12,15 @@
     "X": "minecraft:leather"
   },
   "result": {
-    "id": "minecraft:command_block",
+    "id": "minecraft:leather",
     "components": {
-      "minecraft:item_model": "minecraft:leather",
       "minecraft:item_name": {
         "text": "Condensed Leather",
         "color": "dark_green"
       },
       "minecraft:lore": [
         {
-          "text": "9 Leather -> Condensed Leather",
-          "color": "gray",
-          "italic": false
-        },
-        {
-          "text": "9 Condensed Leather -> Super Condensed Leather",
+          "text": "Worth 9 Leather",
           "color": "gray",
           "italic": false
         }
@@ -33,7 +28,9 @@
       "minecraft:enchantment_glint_override": true,
       "minecraft:custom_data": {
         "craftable_spawners": {
-          "group": "placeholder"
+          "group": "condensed",
+          "tier": "condensed",
+          "item": "leather"
         }
       }
     }

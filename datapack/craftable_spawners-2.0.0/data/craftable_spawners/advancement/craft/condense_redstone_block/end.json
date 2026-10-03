@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "unlocked": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/redstone_block"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_redstone_block/end"
+  }
+}
