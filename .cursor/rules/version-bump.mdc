@@ -27,7 +27,3 @@ python3 tools/test_accounting.py
 ```
 
 Commit the generator change and the regenerated datapack tree together with the functional change.
-
-**Bukkit plugin (if you changed `src/` or `pom.xml` plugin behavior):** Bump `<version>` in `pom.xml`. `plugin.yml` uses `${project.version}` automatically.
-
-Keep datapack and plugin versions independent unless the user asks to align them.

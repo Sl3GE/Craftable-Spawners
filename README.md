@@ -1,8 +1,7 @@
 # Craftable Spawners
 
 A Minecraft **Java Edition 26.3** data pack that lets players craft mob spawners
-without any commands. It is a port of the original 1.16 Spigot plugin (whose
-source is still in `src/` for reference).
+without any commands.
 
 ## Installation
 
@@ -65,7 +64,7 @@ All recipes have Iron Bars in the center.
 
 ## Commands (operators)
 
-The plugin's `/giveSpawner <entityType> <amount>` is now a function:
+Operators can give spawners and condensed items:
 
 ```
 /function craftable_spawners:give {mob:"zombie",amount:1}

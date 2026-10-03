@@ -761,7 +761,7 @@ def gen_items(pack):
 
     # Player facing helpers
     pack.function("give", [
-        "# Replacement for the plugin's /giveSpawner command.",
+        "# Give a crafted-style spawner (operators).",
         '# Usage: /function %s:give {mob:"zombie",amount:1}' % NS,
         '$function %s:spawner/give {id:"minecraft:$(mob)",path:"$(mob)",count:$(amount)}' % NS,
         '$tellraw @s [{text:"Gave $(amount) ",color:"gold"},{translate:"entity.minecraft.$(mob)"},{text:" Spawner"}]',
