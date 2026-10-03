@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "unlocked": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/slime"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_slime/end"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "unlocked": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/nether_star"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_nether_star/end"
+  }
+}

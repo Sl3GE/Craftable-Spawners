@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_ghast/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/ghast"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_ghast/on_n"
+  }
+}

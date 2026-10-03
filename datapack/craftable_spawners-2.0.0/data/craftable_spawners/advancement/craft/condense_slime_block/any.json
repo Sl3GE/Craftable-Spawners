@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_slime_block/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/slime_block"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_slime_block/on_n"
+  }
+}

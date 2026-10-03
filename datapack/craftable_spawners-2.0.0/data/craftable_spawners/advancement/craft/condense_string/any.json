@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_string/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/string"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_string/on_n"
+  }
+}

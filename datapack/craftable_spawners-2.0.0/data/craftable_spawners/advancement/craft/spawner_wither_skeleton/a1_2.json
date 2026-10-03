@@ -1,0 +1,28 @@
+{
+  "parent": "craftable_spawners:craft/spawner_wither_skeleton/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/wither_skeleton",
+        "ingredients": [
+          {
+            "items": "minecraft:wither_skeleton_skull",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:wither_skeleton_skull",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_wither_skeleton/on_a1"
+  }
+}

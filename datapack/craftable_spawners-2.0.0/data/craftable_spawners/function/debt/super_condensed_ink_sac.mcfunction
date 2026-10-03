@@ -1,0 +1,1 @@
+execute as @e[type=minecraft:item,distance=..8] if items entity @s contents minecraft:ink_sac[minecraft:custom_data~{craftable_spawners:{tier:"super_condensed"}}] run function craftable_spawners:debt/reduce

@@ -1,0 +1,22 @@
+{
+  "parent": "craftable_spawners:craft/condense_mutton/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/mutton",
+        "ingredients": [
+          {
+            "items": "minecraft:mutton",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"super_condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_mutton/on_a2"
+  }
+}

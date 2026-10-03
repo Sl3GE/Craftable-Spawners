@@ -1,0 +1,22 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_iron_block/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "minecraft:iron_ingot_from_iron_block",
+        "ingredients": [
+          {
+            "items": "minecraft:iron_block",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_iron_block/on_a1"
+  }
+}

@@ -1,0 +1,1 @@
+execute as @e[type=minecraft:item,distance=..8] if items entity @s contents minecraft:white_wool[minecraft:custom_data~{craftable_spawners:{tier:"condensed"}}] run function craftable_spawners:debt/reduce

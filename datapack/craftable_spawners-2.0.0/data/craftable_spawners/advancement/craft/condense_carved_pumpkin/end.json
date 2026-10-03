@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "unlocked": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/carved_pumpkin"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_carved_pumpkin/end"
+  }
+}

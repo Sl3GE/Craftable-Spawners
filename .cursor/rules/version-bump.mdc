@@ -1,0 +1,29 @@
+---
+description: Bump project version on feature and bug-fix changes
+alwaysApply: true
+---
+
+# Version bumps
+
+When you change behavior that users would notice (bug fix or new/changed feature), increment the version in the same work—not in a follow-up.
+
+Use [semantic versioning](https://semver.org/) (`MAJOR.MINOR.PATCH`):
+
+| Change | Bump |
+|--------|------|
+| Bug fix | **PATCH** (e.g. `2.0.0` → `2.0.1`) |
+| New feature or enhancement | **MINOR** (e.g. `2.0.1` → `2.1.0`); reset PATCH to `0` |
+| Breaking change (removed recipes, behavior players relied on) | **MAJOR** (e.g. `2.1.0` → `3.0.0`); reset MINOR and PATCH to `0` |
+
+Do **not** bump for refactors, comments-only edits, tests-only changes, or docs-only changes unless the user asks.
+
+## Where to update
+
+**Data pack (primary):** Set `VERSION` at the top of `tools/generate_datapack.py`. That drives `PACK_NAME`, `pack.mcmeta`, and the `datapack/craftable_spawners-<version>/` output. After changing `VERSION`, run:
+
+```bash
+python3 tools/generate_datapack.py
+python3 tools/test_accounting.py
+```
+
+Commit the generator change and the regenerated datapack tree together with the functional change.

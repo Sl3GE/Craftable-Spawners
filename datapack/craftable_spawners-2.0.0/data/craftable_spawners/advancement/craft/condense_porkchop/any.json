@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_porkchop/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/porkchop"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_porkchop/on_n"
+  }
+}

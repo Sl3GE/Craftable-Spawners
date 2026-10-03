@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_sheep/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/sheep"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_sheep/on_n"
+  }
+}

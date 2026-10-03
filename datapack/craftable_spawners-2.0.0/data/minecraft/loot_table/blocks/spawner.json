@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "condition": "minecraft:tool/can_silk_touch",
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:spawner",
+          "modifier": [
+            {
+              "type": "minecraft:set_custom_data",
+              "tag": "{craftable_spawners:{group:\"raw_spawner\"}}"
+            },
+            {
+              "type": "minecraft:copy_custom_data",
+              "source": "block_entity",
+              "ops": [
+                {
+                  "source": "SpawnData.entity.id",
+                  "target": "craftable_spawners.dropped",
+                  "op": "replace"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "minecraft:blocks/spawner"
+}

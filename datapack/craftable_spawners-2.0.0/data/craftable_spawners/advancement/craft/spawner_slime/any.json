@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_slime/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/slime"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_slime/on_n"
+  }
+}

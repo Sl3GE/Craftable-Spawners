@@ -1,0 +1,21 @@
+{
+  "criteria": {
+    "placed": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": {
+          "type": "minecraft:match_tool",
+          "predicate": {
+            "items": "minecraft:spawner",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{}}"
+            }
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:place/placed"
+  }
+}

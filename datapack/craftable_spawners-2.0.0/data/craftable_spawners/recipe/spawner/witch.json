@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_spawner",
+  "show_notification": false,
+  "pattern": [
+    "GRG",
+    "RIR",
+    "GRG"
+  ],
+  "key": {
+    "G": "minecraft:gunpowder",
+    "R": "minecraft:redstone_block",
+    "I": "minecraft:iron_bars"
+  },
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:spawner",
+      "minecraft:item_name": {
+        "text": "Witch Spawner",
+        "color": "gold"
+      },
+      "minecraft:lore": [
+        {
+          "text": "4 Super Condensed Gunpowder",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "4 Super Condensed Redstone Block",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "+ Iron Bars",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

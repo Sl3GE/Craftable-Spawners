@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_snow_golem/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/snow_golem"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_snow_golem/on_n"
+  }
+}

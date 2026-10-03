@@ -1,0 +1,22 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_magma_cream/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/magma_cream",
+        "ingredients": [
+          {
+            "items": "minecraft:magma_cream",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_magma_cream/on_a1"
+  }
+}
