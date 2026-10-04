@@ -26,7 +26,7 @@ import zipfile
 from pathlib import Path
 
 NS = "craftable_spawners"
-VERSION = "1.0.0"
+VERSION = "2.0.0"
 PACK_FORMAT = 121  # Java Edition 26.3
 DESCRIPTION = "Craftable Spawners v%s - craft mob spawners from condensed mob drops" % VERSION
 PACK_NAME = "%s-%s" % (NS, VERSION)
