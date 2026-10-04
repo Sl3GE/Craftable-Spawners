@@ -5,14 +5,13 @@ alwaysApply: true
 
 # Update docs with feature changes
 
-When you change player-facing pack behavior (recipes, items, spawners, condensing, commands), update `docs/` in the **same** work. Source of truth is the tables in `tools/generate_datapack.py` (`CONDENSED`, `SPAWNERS`, `VANILLA_UNCONDENSE`), not the generated `datapack/` tree.
+When you change player-facing pack behavior (recipes, items, spawners, condensing, commands), update `docs/` in the **same** work. Source of truth is the tables in `tools/generate_datapack.py` (`CONDENSED`, `SPAWNERS`), not the generated `datapack/` tree.
 
 ## Files
 
 | File | Update when |
 | --- | --- |
 | `docs/existing-spawner-support.md` | A spawner recipe is added, removed, or its ingredients/pattern change |
-| `docs/future-spawner-support.md` | A mob gains or loses a craftable spawner; keep the "already in the pack" line and the missing count accurate |
 
 Keep the docs concise (ids + custom condensed items). Mirror `C` / `SC` and Iron Bars notes already used there.
 

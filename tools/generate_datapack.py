@@ -8,19 +8,15 @@ condensed items (which are ordinary items carrying custom data) cannot be
 required directly by a recipe. Instead every recipe that involves them is
 validated during the craft:
 
-* Condensing outputs the real condensed item and un-condensing a single plain
-  item, so results stack like vanilla ones and are harmless in a Crafter.
-  Spawner recipes output a placeholder item (a Crafter must not make spawners).
+* Condensing outputs the real condensed item, so results stack like vanilla
+  ones and are harmless in a Crafter. Spawner recipes output a placeholder
+  item (a Crafter must not make spawners).
 * Hidden advancements using the `minecraft:recipe_crafted` trigger count how
   many condensed / super condensed items were in the grid, then lock the
   recipe again.
 * The game unlocks the recipe right after the craft, which fires a
   `minecraft:recipe_unlocked` advancement. Its function swaps the result for
   the real one (or an exact refund of the ingredients) in the same tick.
-
-Un-condensing items that already have a vanilla single-item recipe (bone,
-blaze rod, iron block, ...) keeps the vanilla output and tops it up with the
-remaining value, so vanilla behaviour and Crafter automation stay untouched.
 """
 
 import argparse
@@ -30,7 +26,7 @@ import zipfile
 from pathlib import Path
 
 NS = "craftable_spawners"
-VERSION = "3.1.0"
+VERSION = "1.0.0"
 PACK_FORMAT = 121  # Java Edition 26.3
 DESCRIPTION = "Craftable Spawners v%s - craft mob spawners from condensed mob drops" % VERSION
 PACK_NAME = "%s-%s" % (NS, VERSION)
@@ -110,23 +106,6 @@ CONDENSED = [
     ("saddle", "Saddle", False),
     ("shulker_shell", "Shulker Shell", False),
 ]
-
-# Vanilla single-ingredient recipes that already use one of the condensed base
-# items. Un-condensing those items piggybacks on the vanilla recipe.
-VANILLA_UNCONDENSE = {
-    "bone": "minecraft:bone_meal",
-    "blaze_rod": "minecraft:blaze_powder",
-    "ink_sac": "minecraft:black_dye",
-    "slime_block": "minecraft:slime_ball",
-    "redstone_block": "minecraft:redstone",
-    "iron_block": "minecraft:iron_ingot_from_iron_block",
-    "gold_block": "minecraft:gold_ingot_from_gold_block",
-    "emerald_block": "minecraft:emerald",
-    # One bamboo block (or stripped bamboo block) is two bamboo planks.
-    "bamboo_block": "minecraft:bamboo_planks",
-    # One resin block is nine resin clumps.
-    "resin_block": "minecraft:resin_clump",
-}
 
 RING = ["XXX", "XIX", "XXX"]
 SIDES = [" X ", "XIX", " X "]
@@ -398,7 +377,7 @@ class IngredientClass:
 class Recipe:
     def __init__(self, key, kind, recipe_id, classes, **extra):
         self.key = key
-        self.kind = kind  # condense | uncondense | uncondense_vanilla | spawner
+        self.kind = kind  # condense | spawner
         self.recipe_id = recipe_id
         self.classes = classes
         self.index = 0
@@ -426,17 +405,6 @@ class Recipe:
             if HAS_SUPER[x]:
                 add(tier_item_id(x, S), V("a2"))
             add(tier_item_id(x, 0), 9 * V("h") - V("a1") - V("a2"))
-        elif self.kind == "uncondense":
-            x = self.item
-            add(tier_item_id(x, 0), 9 * V("a1") + (V("n") - V("a1") - V("a2")))
-            if HAS_SUPER[x]:
-                add(tier_item_id(x, C), 9 * V("a2"))
-        elif self.kind == "uncondense_vanilla":
-            # The vanilla output (worth one base item) is kept; top up the rest.
-            x = self.item
-            add(tier_item_id(x, 0), 8 * V("a1") + 8 * V("a2"))
-            if HAS_SUPER[x]:
-                add(tier_item_id(x, C), 8 * V("a2"))
         elif self.kind == "spawner":
             add("spawner:" + self.mob, V("v"))
             failed = V("n") - V("v")
@@ -459,8 +427,6 @@ class Recipe:
         """(target, count) the crafting grid itself hands out, None for vanilla recipes."""
         if self.kind == "condense":
             return tier_item_id(self.item, C), 1
-        if self.kind == "uncondense":
-            return tier_item_id(self.item, 0), 1
         if self.kind == "spawner":
             return "placeholder", 1
         return None
@@ -475,9 +441,7 @@ class Recipe:
         return {k: v for k, v in out.items() if not v.is_zero()}
 
     def counters_used(self):
-        used = set()
-        if self.kind != "uncondense_vanilla":
-            used.add("n")
+        used = {"n"}
         if self.kind == "condense":
             used.add("h")
         if (self.kind == "condense" and HAS_SUPER[self.item]) or self.kind == "spawner":
@@ -495,17 +459,6 @@ def build_recipes():
             "condense_" + item, "condense", "%s:condense/%s" % (NS, item),
             [IngredientClass(item, None, 9, "a")], item=item,
         ))
-    for item, name, has_super in CONDENSED:
-        if item in VANILLA_UNCONDENSE:
-            recipes.append(Recipe(
-                "uncondense_" + item, "uncondense_vanilla", VANILLA_UNCONDENSE[item],
-                [IngredientClass(item, None, 1, "a")], item=item,
-            ))
-        else:
-            recipes.append(Recipe(
-                "uncondense_" + item, "uncondense", "%s:uncondense/%s" % (NS, item),
-                [IngredientClass(item, None, 1, "a")], item=item,
-            ))
     seen_layouts = {}
     for mob, pattern, key in SPAWNERS:
         layout = tuple(
@@ -568,38 +521,8 @@ class Pack:
 
 # --------------------------------------------------------------------------- generation
 
-# Vanilla recipes that are re-locked and re-unlocked on every condensed craft
-# (see gen_advancements); they are overridden only to silence the unlock toast.
-VANILLA_RECIPE_FILES = {
-    "minecraft:bone_meal": {"group": "bonemeal", "ingredients": ["minecraft:bone"],
-                            "result": {"count": 3, "id": "minecraft:bone_meal"}},
-    "minecraft:blaze_powder": {"ingredients": ["minecraft:blaze_rod"],
-                               "result": {"count": 2, "id": "minecraft:blaze_powder"}},
-    "minecraft:black_dye": {"group": "black_dye", "ingredients": ["minecraft:ink_sac"],
-                            "result": {"id": "minecraft:black_dye"}},
-    "minecraft:slime_ball": {"ingredients": ["minecraft:slime_block"],
-                             "result": {"count": 9, "id": "minecraft:slime_ball"}},
-    "minecraft:redstone": {"category": "redstone", "ingredients": ["minecraft:redstone_block"],
-                           "result": {"count": 9, "id": "minecraft:redstone"}},
-    "minecraft:iron_ingot_from_iron_block": {"group": "iron_ingot", "ingredients": ["minecraft:iron_block"],
-                                             "result": {"count": 9, "id": "minecraft:iron_ingot"}},
-    "minecraft:gold_ingot_from_gold_block": {"group": "gold_ingot", "ingredients": ["minecraft:gold_block"],
-                                             "result": {"count": 9, "id": "minecraft:gold_ingot"}},
-    "minecraft:emerald": {"ingredients": ["minecraft:emerald_block"],
-                          "result": {"count": 9, "id": "minecraft:emerald"}},
-    # Tag, so a stripped bamboo block still crafts planks after this override.
-    "minecraft:bamboo_planks": {"category": "building", "group": "planks",
-                                "ingredients": ["#minecraft:bamboo_blocks"],
-                                "result": {"count": 2, "id": "minecraft:bamboo_planks"}},
-    "minecraft:resin_clump": {"ingredients": ["minecraft:resin_block"],
-                              "result": {"count": 9, "id": "minecraft:resin_clump"}},
-}
-
 
 def gen_recipes(pack, recipes):
-    for recipe_id, body in VANILLA_RECIPE_FILES.items():
-        pack.json("data/minecraft/recipe/%s.json" % recipe_id.split(":", 1)[1],
-                  dict({"type": "minecraft:crafting_shapeless"}, **body, show_notification=False))
     for r in recipes:
         if r.kind == "condense":
             x = r.item
@@ -611,18 +534,6 @@ def gen_recipes(pack, recipes):
                 "pattern": ["XXX", "XXX", "XXX"],
                 "key": {"X": mc(x)},
                 "result": {"id": mc(x), "components": tier_components(x, C)},
-            })
-        elif r.kind == "uncondense":
-            # Outputs a single plain item: a harmless 1:1 swap for plain input
-            # (also in a Crafter); condensed input is topped up by the resolver.
-            x = r.item
-            pack.recipe("uncondense/" + x, {
-                "type": "minecraft:crafting_shapeless",
-                "category": "misc",
-                "group": NS + "_uncondense",
-                "show_notification": False,
-                "ingredients": [mc(x)],
-                "result": {"id": mc(x)},
             })
         elif r.kind == "spawner":
             key = {}

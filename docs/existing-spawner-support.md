@@ -1,6 +1,6 @@
 # Existing spawner support
 
-Craftable spawners in this pack (77). Every recipe has **Iron Bars** in the center. `C` = Condensed.
+Craftable spawners in this pack (77). Every recipe has **Iron Bars** in the center. `C` = Condensed. Condensed items have no uncrafting recipe.
 
 | Mob (`id`) | Custom items |
 | --- | --- |

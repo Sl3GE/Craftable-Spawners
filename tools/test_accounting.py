@@ -83,21 +83,6 @@ def expected_outcome(r, cells):
             add(g.tier_item_id(r.item, g.S), 1)
         else:
             refund()
-    elif r.kind == "uncondense":
-        tier = cells[0][2]
-        if tier == g.C:
-            add(g.tier_item_id(r.item, 0), 9)
-        elif tier == g.S:
-            add(g.tier_item_id(r.item, g.C), 9)
-        else:
-            refund()
-    elif r.kind == "uncondense_vanilla":
-        tier = cells[0][2]
-        if tier == g.C:
-            add(g.tier_item_id(r.item, 0), 8)
-        elif tier == g.S:
-            add(g.tier_item_id(r.item, g.C), 8)
-            add(g.tier_item_id(r.item, 0), 8)
     elif r.kind == "spawner":
         valid = all(
             tier == r.grid_key[ch][1] for ch, item, tier in cells if isinstance(r.grid_key[ch], tuple)
@@ -125,10 +110,10 @@ def random_cells(r, rng, bias):
                 else:
                     cells.append((ch, value, 0))
         return cells
-    slots = 9 if r.kind == "condense" else 1
+    assert r.kind == "condense", r.kind
     options = [0] + g.tiers_of(r.item)
     base = rng.choice(options)
-    return [(None, r.item, base if rng.random() < bias else rng.choice(options)) for _ in range(slots)]
+    return [(None, r.item, base if rng.random() < bias else rng.choice(options)) for _ in range(9)]
 
 
 def run_scoreboard(commands, player, fake):

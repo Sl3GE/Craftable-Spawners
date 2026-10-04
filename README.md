@@ -13,29 +13,21 @@ without any commands.
 ## How it works in game
 
 * **Condensing**: 9 of an item in a crafting table make 1 *Condensed* item.
-* **Un-condensing**: put a single condensed item in any crafting grid to get the
-  9 items back (for bone, blaze rod, ink sac, storage blocks, bamboo blocks, and
-  resin blocks you get the vanilla output plus the rest of the value, e.g. 3
-  bone meal + 8 bones, 2 bamboo planks + 8 bamboo blocks, or 9 resin clumps +
-  8 resin blocks).
+  There is no recipe to turn it back into the 9 items.
 * **Spawners**: surround Iron Bars with condensed items (recipes below).
 * **Silk Touch** mining a spawner drops it with its mob kept. Placing it
   restores the mob, even for players who are not operators.
 
 Condensing shows the real Condensed item in the result slot, so clicking or
-shift-clicking it stacks exactly like a vanilla craft. Vanilla recipes only
-check item types, so the result slot can't tell a condensed item from a plain
-one:
-
-* Un-condensing shows a single plain item, but a Condensed item gives 9.
-* Spawner recipes show a preview spawner that turns into the real one.
+shift-clicking it stacks exactly like a vanilla craft. Spawner recipes show a
+preview spawner that turns into the real one.
 
 The swap happens in the same instant as the craft. If the grid held the wrong
 items (for example plain bones in a spawner recipe), the craft is undone and
 every ingredient is given back. Crafter blocks can condense plain items. Don't
 feed them Condensed items, because Crafters can't tell them from plain items and the
-extra value is lost. They also can't make spawners or un-condense, so use a
-crafting table for those.
+extra value is lost. They also can't make spawners, so use a crafting table
+for those.
 
 ### Condensable items
 
