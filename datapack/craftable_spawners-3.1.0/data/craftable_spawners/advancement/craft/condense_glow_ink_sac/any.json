@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_glow_ink_sac/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/glow_ink_sac"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_glow_ink_sac/on_n"
+  }
+}

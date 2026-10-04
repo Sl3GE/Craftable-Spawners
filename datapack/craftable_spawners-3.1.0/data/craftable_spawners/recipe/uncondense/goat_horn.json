@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "craftable_spawners_uncondense",
+  "show_notification": false,
+  "ingredients": [
+    "minecraft:goat_horn"
+  ],
+  "result": {
+    "id": "minecraft:goat_horn"
+  }
+}

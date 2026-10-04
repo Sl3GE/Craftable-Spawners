@@ -1,0 +1,28 @@
+{
+  "parent": "craftable_spawners:craft/condense_rabbit_hide/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/rabbit_hide",
+        "ingredients": [
+          {
+            "items": "minecraft:rabbit_hide",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          },
+          {
+            "items": "minecraft:rabbit_hide",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_rabbit_hide/on_a1"
+  }
+}

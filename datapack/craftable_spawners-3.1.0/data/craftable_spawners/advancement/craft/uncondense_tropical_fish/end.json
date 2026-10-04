@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "unlocked": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/tropical_fish"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_tropical_fish/end"
+  }
+}

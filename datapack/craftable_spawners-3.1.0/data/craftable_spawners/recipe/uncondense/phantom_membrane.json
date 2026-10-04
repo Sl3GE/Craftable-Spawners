@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "craftable_spawners_uncondense",
+  "show_notification": false,
+  "ingredients": [
+    "minecraft:phantom_membrane"
+  ],
+  "result": {
+    "id": "minecraft:phantom_membrane"
+  }
+}

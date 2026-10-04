@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "unlocked": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/amethyst_shard"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_amethyst_shard/end"
+  }
+}

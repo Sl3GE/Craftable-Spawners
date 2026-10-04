@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_resin_block/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/resin_block"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_resin_block/on_n"
+  }
+}

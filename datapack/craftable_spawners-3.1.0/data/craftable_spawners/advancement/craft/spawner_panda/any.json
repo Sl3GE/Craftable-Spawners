@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_panda/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/panda"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_panda/on_n"
+  }
+}

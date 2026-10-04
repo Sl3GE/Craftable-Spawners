@@ -1,0 +1,3 @@
+$item replace entity @s player.cursor with minecraft:tropical_fish[minecraft:item_name={"text":"Condensed Tropical Fish","color":"dark_green"},minecraft:lore=[{"text":"Worth 9 Tropical Fish","color":"gray","italic":false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={"craftable_spawners":{"group":"condensed","tier":"condensed","item":"tropical_fish"}}] $(count)
+scoreboard players set #cursor cs.tmp 0
+scoreboard players set #r cs.tmp 0

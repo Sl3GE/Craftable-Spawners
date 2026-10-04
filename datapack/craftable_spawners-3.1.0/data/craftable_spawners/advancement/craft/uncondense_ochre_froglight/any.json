@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_ochre_froglight/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/ochre_froglight"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_ochre_froglight/on_n"
+  }
+}

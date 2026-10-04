@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_condense",
+  "show_notification": false,
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": "minecraft:rabbit_hide"
+  },
+  "result": {
+    "id": "minecraft:rabbit_hide",
+    "components": {
+      "minecraft:item_name": {
+        "text": "Condensed Rabbit Hide",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "Worth 9 Rabbit Hide",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "condensed",
+          "tier": "condensed",
+          "item": "rabbit_hide"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+$give @s minecraft:turtle_scute[minecraft:item_name={"text":"Condensed Turtle Scute","color":"dark_green"},minecraft:lore=[{"text":"Worth 9 Turtle Scute","color":"gray","italic":false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={"craftable_spawners":{"group":"condensed","tier":"condensed","item":"turtle_scute"}}] $(count)

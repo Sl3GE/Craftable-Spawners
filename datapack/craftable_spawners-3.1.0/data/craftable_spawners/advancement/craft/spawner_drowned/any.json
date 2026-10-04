@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_drowned/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/drowned"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_drowned/on_n"
+  }
+}

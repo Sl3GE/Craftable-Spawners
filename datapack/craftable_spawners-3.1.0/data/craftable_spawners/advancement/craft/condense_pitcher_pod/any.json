@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_pitcher_pod/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/pitcher_pod"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_pitcher_pod/on_n"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_stray/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/stray"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_stray/on_n"
+  }
+}

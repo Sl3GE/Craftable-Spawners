@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_rabbit/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/rabbit"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_rabbit/on_n"
+  }
+}

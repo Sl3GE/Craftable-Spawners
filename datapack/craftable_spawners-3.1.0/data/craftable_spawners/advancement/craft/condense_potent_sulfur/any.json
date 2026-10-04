@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_potent_sulfur/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/potent_sulfur"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_potent_sulfur/on_n"
+  }
+}

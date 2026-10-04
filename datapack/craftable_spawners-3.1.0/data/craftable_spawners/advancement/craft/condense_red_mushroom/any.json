@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_red_mushroom/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/red_mushroom"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_red_mushroom/on_n"
+  }
+}

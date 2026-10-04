@@ -1,0 +1,22 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_breeze_rod/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/breeze_rod",
+        "ingredients": [
+          {
+            "items": "minecraft:breeze_rod",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_breeze_rod/on_a1"
+  }
+}

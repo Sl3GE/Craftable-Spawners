@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_condense",
+  "show_notification": false,
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": "minecraft:red_mushroom"
+  },
+  "result": {
+    "id": "minecraft:red_mushroom",
+    "components": {
+      "minecraft:item_name": {
+        "text": "Condensed Red Mushroom",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "Worth 9 Red Mushroom",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "condensed",
+          "tier": "condensed",
+          "item": "red_mushroom"
+        }
+      }
+    }
+  }
+}

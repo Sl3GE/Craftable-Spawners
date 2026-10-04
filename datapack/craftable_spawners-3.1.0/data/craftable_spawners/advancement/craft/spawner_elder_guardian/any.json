@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_elder_guardian/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/elder_guardian"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_elder_guardian/on_n"
+  }
+}

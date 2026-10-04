@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_evoker/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/evoker"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_evoker/on_n"
+  }
+}

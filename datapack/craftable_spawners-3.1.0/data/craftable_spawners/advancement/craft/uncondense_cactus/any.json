@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_cactus/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/cactus"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_cactus/on_n"
+  }
+}

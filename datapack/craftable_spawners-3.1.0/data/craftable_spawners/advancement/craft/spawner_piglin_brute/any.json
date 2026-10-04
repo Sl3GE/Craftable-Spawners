@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_piglin_brute/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/piglin_brute"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_piglin_brute/on_n"
+  }
+}

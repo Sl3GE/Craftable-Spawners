@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_wet_sponge/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/wet_sponge"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_wet_sponge/on_n"
+  }
+}

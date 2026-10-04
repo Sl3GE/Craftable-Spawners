@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_cobblestone/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/cobblestone"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_cobblestone/on_n"
+  }
+}

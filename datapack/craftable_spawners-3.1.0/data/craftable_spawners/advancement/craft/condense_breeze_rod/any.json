@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_breeze_rod/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/breeze_rod"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_breeze_rod/on_n"
+  }
+}

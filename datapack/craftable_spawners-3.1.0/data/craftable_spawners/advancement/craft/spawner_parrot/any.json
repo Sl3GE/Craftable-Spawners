@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_parrot/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/parrot"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_parrot/on_n"
+  }
+}

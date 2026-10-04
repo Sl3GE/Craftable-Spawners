@@ -1,0 +1,1 @@
+$give @s minecraft:crimson_fungus[minecraft:item_name={"text":"Condensed Crimson Fungus","color":"dark_green"},minecraft:lore=[{"text":"Worth 9 Crimson Fungus","color":"gray","italic":false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={"craftable_spawners":{"group":"condensed","tier":"condensed","item":"crimson_fungus"}}] $(count)

@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_nautilus/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/nautilus"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_nautilus/on_n"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_armadillo_scute/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/armadillo_scute"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_armadillo_scute/on_n"
+  }
+}

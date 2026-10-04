@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_goat/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/goat"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_goat/on_n"
+  }
+}

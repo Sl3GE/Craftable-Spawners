@@ -1,0 +1,22 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_tropical_fish/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/tropical_fish",
+        "ingredients": [
+          {
+            "items": "minecraft:tropical_fish",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_tropical_fish/on_a1"
+  }
+}

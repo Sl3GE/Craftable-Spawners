@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_torchflower_seeds/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/torchflower_seeds"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_torchflower_seeds/on_n"
+  }
+}

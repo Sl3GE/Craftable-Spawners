@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "unlocked": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/red_mushroom"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_red_mushroom/end"
+  }
+}

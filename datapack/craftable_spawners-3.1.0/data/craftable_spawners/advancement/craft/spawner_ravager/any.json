@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_ravager/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/ravager"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_ravager/on_n"
+  }
+}

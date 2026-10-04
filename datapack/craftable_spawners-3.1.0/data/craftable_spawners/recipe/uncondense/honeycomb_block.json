@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "craftable_spawners_uncondense",
+  "show_notification": false,
+  "ingredients": [
+    "minecraft:honeycomb_block"
+  ],
+  "result": {
+    "id": "minecraft:honeycomb_block"
+  }
+}

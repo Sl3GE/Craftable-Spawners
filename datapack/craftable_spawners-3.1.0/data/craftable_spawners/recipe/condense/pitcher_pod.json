@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_condense",
+  "show_notification": false,
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": "minecraft:pitcher_pod"
+  },
+  "result": {
+    "id": "minecraft:pitcher_pod",
+    "components": {
+      "minecraft:item_name": {
+        "text": "Condensed Pitcher Pod",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "Worth 9 Pitcher Pod",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "condensed",
+          "tier": "condensed",
+          "item": "pitcher_pod"
+        }
+      }
+    }
+  }
+}

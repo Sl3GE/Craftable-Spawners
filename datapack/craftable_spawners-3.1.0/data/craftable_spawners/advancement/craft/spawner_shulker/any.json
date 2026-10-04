@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_shulker/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/shulker"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_shulker/on_n"
+  }
+}

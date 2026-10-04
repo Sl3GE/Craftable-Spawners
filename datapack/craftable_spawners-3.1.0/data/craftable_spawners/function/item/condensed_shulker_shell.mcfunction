@@ -1,0 +1,1 @@
+$give @s minecraft:shulker_shell[minecraft:item_name={"text":"Condensed Shulker Shell","color":"dark_green"},minecraft:lore=[{"text":"Worth 9 Shulker Shell","color":"gray","italic":false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={"craftable_spawners":{"group":"condensed","tier":"condensed","item":"shulker_shell"}}] $(count)

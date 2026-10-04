@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_camel_husk/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/camel_husk"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_camel_husk/on_n"
+  }
+}

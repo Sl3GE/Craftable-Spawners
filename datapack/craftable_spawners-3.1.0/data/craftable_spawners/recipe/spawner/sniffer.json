@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_spawner",
+  "show_notification": false,
+  "pattern": [
+    "ABA",
+    "BIB",
+    "ABA"
+  ],
+  "key": {
+    "A": "minecraft:torchflower_seeds",
+    "B": "minecraft:pitcher_pod",
+    "I": "minecraft:iron_bars"
+  },
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:spawner",
+      "minecraft:item_name": {
+        "text": "Sniffer Spawner",
+        "color": "gold"
+      },
+      "minecraft:lore": [
+        {
+          "text": "4 Condensed Torchflower Seeds",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "4 Condensed Pitcher Pod",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "+ Iron Bars",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

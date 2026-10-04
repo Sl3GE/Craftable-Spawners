@@ -1,0 +1,1 @@
+$give @s minecraft:cod[minecraft:item_name={"text":"Condensed Cod","color":"dark_green"},minecraft:lore=[{"text":"Worth 9 Cod","color":"gray","italic":false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={"craftable_spawners":{"group":"condensed","tier":"condensed","item":"cod"}}] $(count)

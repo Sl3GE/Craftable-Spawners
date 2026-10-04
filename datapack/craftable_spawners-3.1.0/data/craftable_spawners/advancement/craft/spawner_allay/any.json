@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_allay/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/allay"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_allay/on_n"
+  }
+}

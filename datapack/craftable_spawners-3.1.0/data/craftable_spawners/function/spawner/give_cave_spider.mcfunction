@@ -1,0 +1,1 @@
+$give @s minecraft:spawner[minecraft:block_entity_data={id:"minecraft:mob_spawner",SpawnData:{entity:{id:"minecraft:cave_spider"}}},minecraft:item_name=[{translate:"entity.minecraft.cave_spider",color:"gold"},{text:" Spawner"}],minecraft:custom_data={craftable_spawners:{spawner:"minecraft:cave_spider"}}] $(count)

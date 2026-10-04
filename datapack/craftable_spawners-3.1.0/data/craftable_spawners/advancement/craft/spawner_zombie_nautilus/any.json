@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_zombie_nautilus/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/zombie_nautilus"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_zombie_nautilus/on_n"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_amethyst_shard/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/amethyst_shard"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_amethyst_shard/on_n"
+  }
+}

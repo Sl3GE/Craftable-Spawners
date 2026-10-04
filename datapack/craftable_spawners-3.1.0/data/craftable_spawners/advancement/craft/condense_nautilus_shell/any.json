@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_nautilus_shell/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/nautilus_shell"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_nautilus_shell/on_n"
+  }
+}

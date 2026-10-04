@@ -1,0 +1,1 @@
+$give @s minecraft:nautilus_shell[minecraft:item_name={"text":"Condensed Nautilus Shell","color":"dark_green"},minecraft:lore=[{"text":"Worth 9 Nautilus Shell","color":"gray","italic":false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={"craftable_spawners":{"group":"condensed","tier":"condensed","item":"nautilus_shell"}}] $(count)

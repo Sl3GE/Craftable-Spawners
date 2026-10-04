@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_warped_fungus/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/warped_fungus"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_warped_fungus/on_n"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_spawner",
+  "show_notification": false,
+  "pattern": [
+    " X ",
+    "XIX",
+    " X "
+  ],
+  "key": {
+    "X": "minecraft:bone",
+    "I": "minecraft:iron_bars"
+  },
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:spawner",
+      "minecraft:item_name": {
+        "text": "Wolf Spawner",
+        "color": "gold"
+      },
+      "minecraft:lore": [
+        {
+          "text": "4 Condensed Bone",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "+ Iron Bars",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

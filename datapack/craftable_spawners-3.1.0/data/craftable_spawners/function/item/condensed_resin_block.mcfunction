@@ -1,0 +1,1 @@
+$give @s minecraft:resin_block[minecraft:item_name={"text":"Condensed Block of Resin","color":"dark_green"},minecraft:lore=[{"text":"Worth 9 Block of Resin","color":"gray","italic":false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={"craftable_spawners":{"group":"condensed","tier":"condensed","item":"resin_block"}}] $(count)

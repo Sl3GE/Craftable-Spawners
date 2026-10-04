@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "unlocked": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/salmon"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_salmon/end"
+  }
+}

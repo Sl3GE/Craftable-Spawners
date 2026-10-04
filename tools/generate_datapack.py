@@ -30,7 +30,7 @@ import zipfile
 from pathlib import Path
 
 NS = "craftable_spawners"
-VERSION = "3.0.0"
+VERSION = "3.1.0"
 PACK_FORMAT = 121  # Java Edition 26.3
 DESCRIPTION = "Craftable Spawners v%s - craft mob spawners from condensed mob drops" % VERSION
 PACK_NAME = "%s-%s" % (NS, VERSION)
@@ -72,6 +72,43 @@ CONDENSED = [
     ("chicken", "Chicken", False),
     ("feather", "Feather", False),
     ("emerald_block", "Emerald Block", False),
+    # Items added for the remaining spawn-egg mobs
+    ("armadillo_scute", "Armadillo Scute", False),
+    ("honeycomb_block", "Honeycomb Block", False),
+    ("sweet_berries", "Sweet Berries", False),
+    ("bamboo_block", "Block of Bamboo", False),
+    ("rabbit", "Rabbit", False),
+    ("rabbit_hide", "Rabbit Hide", False),
+    ("glow_ink_sac", "Glow Ink Sac", False),
+    ("pufferfish", "Pufferfish", False),
+    ("cod", "Cod", False),
+    ("salmon", "Salmon", False),
+    ("tropical_fish", "Tropical Fish", False),
+    ("amethyst_shard", "Amethyst Shard", False),
+    ("torchflower_seeds", "Torchflower Seeds", False),
+    ("pitcher_pod", "Pitcher Pod", False),
+    ("breeze_rod", "Breeze Rod", False),
+    ("prismarine", "Prismarine", False),
+    ("phantom_membrane", "Phantom Membrane", False),
+    ("seagrass", "Seagrass", False),
+    ("turtle_scute", "Turtle Scute", False),
+    ("cactus", "Cactus", False),
+    ("red_mushroom", "Red Mushroom", False),
+    ("warped_fungus", "Warped Fungus", False),
+    ("crimson_fungus", "Crimson Fungus", False),
+    ("cobblestone", "Cobblestone", False),
+    ("spider_eye", "Spider Eye", False),
+    ("sand", "Sand", False),
+    ("goat_horn", "Goat Horn", False),
+    ("nautilus_shell", "Nautilus Shell", False),
+    ("ochre_froglight", "Ochre Froglight", False),
+    ("potent_sulfur", "Potent Sulfur", False),
+    ("resin_block", "Block of Resin", False),
+    ("wet_sponge", "Wet Sponge", False),
+    ("sculk_catalyst", "Sculk Catalyst", False),
+    ("totem_of_undying", "Totem of Undying", False),
+    ("saddle", "Saddle", False),
+    ("shulker_shell", "Shulker Shell", False),
 ]
 
 # Vanilla single-ingredient recipes that already use one of the condensed base
@@ -85,9 +122,17 @@ VANILLA_UNCONDENSE = {
     "iron_block": "minecraft:iron_ingot_from_iron_block",
     "gold_block": "minecraft:gold_ingot_from_gold_block",
     "emerald_block": "minecraft:emerald",
+    # One bamboo block (or stripped bamboo block) is two bamboo planks.
+    "bamboo_block": "minecraft:bamboo_planks",
+    # One resin block is nine resin clumps.
+    "resin_block": "minecraft:resin_clump",
 }
 
 RING = ["XXX", "XIX", "XXX"]
+SIDES = [" X ", "XIX", " X "]
+CORNERS = ["X X", " I ", "X X"]
+TOP = ["AAA", "BIB", "BBB"]  # three on the top row, five of the other item
+CROSS = ["ABA", "BIB", "ABA"]  # corners A, sides B
 C, S = 1, 2  # condensed / super condensed
 
 # (mob, pattern, key). Key values are either a vanilla item id or (base item, tier).
@@ -115,7 +160,63 @@ SPAWNERS = [
     ("horse", RING, {"X": ("leather", C), "I": "iron_bars"}),
     ("squid", RING, {"X": ("ink_sac", C), "I": "iron_bars"}),
     ("chicken", ["FFF", "CIC", "CCC"], {"F": ("feather", C), "C": ("chicken", C), "I": "iron_bars"}),
-    ("villager", [" E ", "EIE", " E "], {"E": ("emerald_block", C), "I": "iron_bars"}),
+    ("villager", SIDES, {"X": ("emerald_block", C), "I": "iron_bars"}),
+    # Remaining spawn-egg mobs
+    ("allay", RING, {"X": ("amethyst_shard", C), "I": "iron_bars"}),
+    ("armadillo", RING, {"X": ("armadillo_scute", C), "I": "iron_bars"}),
+    ("axolotl", SIDES, {"X": ("tropical_fish", C), "I": "iron_bars"}),
+    ("bee", RING, {"X": ("honeycomb_block", C), "I": "iron_bars"}),
+    ("bogged", TOP, {"A": ("red_mushroom", C), "B": ("bone", C), "I": "iron_bars"}),
+    ("breeze", RING, {"X": ("breeze_rod", C), "I": "iron_bars"}),
+    ("camel", RING, {"X": ("cactus", C), "I": "iron_bars"}),
+    ("camel_husk", TOP, {"A": ("cactus", C), "B": ("rotten_flesh", C), "I": "iron_bars"}),
+    ("cat", CORNERS, {"X": ("string", C), "I": "iron_bars"}),
+    ("cave_spider", CROSS, {"A": ("spider_eye", C), "B": ("string", C), "I": "iron_bars"}),
+    ("cod", RING, {"X": ("cod", C), "I": "iron_bars"}),
+    ("creaking", RING, {"X": ("resin_block", C), "I": "iron_bars"}),
+    ("dolphin", SIDES, {"X": ("cod", C), "I": "iron_bars"}),
+    ("drowned", TOP, {"A": ("prismarine", C), "B": ("rotten_flesh", C), "I": "iron_bars"}),
+    ("elder_guardian", RING, {"X": ("wet_sponge", C), "I": "iron_bars"}),
+    ("endermite", SIDES, {"X": ("ender_pearl", C), "I": "iron_bars"}),
+    ("evoker", RING, {"X": ("totem_of_undying", C), "I": "iron_bars"}),
+    ("fox", RING, {"X": ("sweet_berries", C), "I": "iron_bars"}),
+    ("frog", RING, {"X": ("ochre_froglight", C), "I": "iron_bars"}),
+    ("glow_squid", RING, {"X": ("glow_ink_sac", C), "I": "iron_bars"}),
+    ("goat", RING, {"X": ("goat_horn", C), "I": "iron_bars"}),
+    ("guardian", RING, {"X": ("prismarine", C), "I": "iron_bars"}),
+    ("hoglin", TOP, {"A": ("crimson_fungus", C), "B": ("porkchop", C), "I": "iron_bars"}),
+    ("husk", TOP, {"A": ("sand", C), "B": ("rotten_flesh", C), "I": "iron_bars"}),
+    ("llama", TOP, {"A": ("white_wool", C), "B": ("leather", C), "I": "iron_bars"}),
+    ("mooshroom", TOP, {"A": ("red_mushroom", C), "B": ("beef", C), "I": "iron_bars"}),
+    ("nautilus", RING, {"X": ("nautilus_shell", C), "I": "iron_bars"}),
+    ("ocelot", CROSS, {"A": ("cod", C), "B": ("salmon", C), "I": "iron_bars"}),
+    ("panda", RING, {"X": ("bamboo_block", C), "I": "iron_bars"}),
+    ("parched", TOP, {"A": ("sand", C), "B": ("bone", C), "I": "iron_bars"}),
+    ("parrot", RING, {"X": ("feather", C), "I": "iron_bars"}),
+    ("phantom", RING, {"X": ("phantom_membrane", C), "I": "iron_bars"}),
+    ("piglin", SIDES, {"X": ("gold_block", C), "I": "iron_bars"}),
+    ("piglin_brute", CROSS, {"A": ("gold_block", C), "B": ("iron_block", C), "I": "iron_bars"}),
+    ("polar_bear", TOP, {"A": ("salmon", C), "B": ("cod", C), "I": "iron_bars"}),
+    ("pufferfish", RING, {"X": ("pufferfish", C), "I": "iron_bars"}),
+    ("rabbit", TOP, {"A": ("rabbit_hide", C), "B": ("rabbit", C), "I": "iron_bars"}),
+    ("ravager", RING, {"X": ("saddle", C), "I": "iron_bars"}),
+    ("salmon", RING, {"X": ("salmon", C), "I": "iron_bars"}),
+    ("shulker", RING, {"X": ("shulker_shell", C), "I": "iron_bars"}),
+    ("silverfish", RING, {"X": ("cobblestone", C), "I": "iron_bars"}),
+    ("skeleton_horse", TOP, {"A": ("leather", C), "B": ("bone", C), "I": "iron_bars"}),
+    ("sniffer", CROSS, {"A": ("torchflower_seeds", C), "B": ("pitcher_pod", C), "I": "iron_bars"}),
+    ("stray", TOP, {"A": ("snow_block", C), "B": ("bone", C), "I": "iron_bars"}),
+    ("strider", TOP, {"A": ("warped_fungus", C), "B": ("string", C), "I": "iron_bars"}),
+    ("sulfur_cube", CROSS, {"A": ("potent_sulfur", C), "B": ("slime_block", C), "I": "iron_bars"}),
+    ("tadpole", SIDES, {"X": ("ochre_froglight", C), "I": "iron_bars"}),
+    ("tropical_fish", RING, {"X": ("tropical_fish", C), "I": "iron_bars"}),
+    ("turtle", TOP, {"A": ("turtle_scute", C), "B": ("seagrass", C), "I": "iron_bars"}),
+    ("warden", RING, {"X": ("sculk_catalyst", C), "I": "iron_bars"}),
+    ("wolf", SIDES, {"X": ("bone", C), "I": "iron_bars"}),
+    ("zoglin", TOP, {"A": ("rotten_flesh", C), "B": ("porkchop", C), "I": "iron_bars"}),
+    ("zombie_horse", TOP, {"A": ("rotten_flesh", C), "B": ("leather", C), "I": "iron_bars"}),
+    ("zombie_nautilus", TOP, {"A": ("nautilus_shell", C), "B": ("rotten_flesh", C), "I": "iron_bars"}),
+    ("zombie_villager", TOP, {"A": ("emerald_block", C), "B": ("rotten_flesh", C), "I": "iron_bars"}),
 ]
 
 ITEM_NAMES = {item: name for item, name, _ in CONDENSED}
@@ -405,7 +506,17 @@ def build_recipes():
                 "uncondense_" + item, "uncondense", "%s:uncondense/%s" % (NS, item),
                 [IngredientClass(item, None, 1, "a")], item=item,
             ))
+    seen_layouts = {}
     for mob, pattern, key in SPAWNERS:
+        layout = tuple(
+            tuple(None if ch == " " else (key[ch][0] if isinstance(key[ch], tuple) else key[ch]) for ch in row)
+            for row in pattern
+        )
+        if layout in seen_layouts:
+            raise SystemExit("duplicate spawner layout: %s and %s" % (seen_layouts[layout], mob))
+        seen_layouts[layout] = mob
+        if pattern[1][1] == " " or key[pattern[1][1]] != "iron_bars":
+            raise SystemExit("spawner %s is missing iron bars in the center" % mob)
         counts = {}
         for row in pattern:
             for ch in row:
@@ -476,6 +587,12 @@ VANILLA_RECIPE_FILES = {
                                              "result": {"count": 9, "id": "minecraft:gold_ingot"}},
     "minecraft:emerald": {"ingredients": ["minecraft:emerald_block"],
                           "result": {"count": 9, "id": "minecraft:emerald"}},
+    # Tag, so a stripped bamboo block still crafts planks after this override.
+    "minecraft:bamboo_planks": {"category": "building", "group": "planks",
+                                "ingredients": ["#minecraft:bamboo_blocks"],
+                                "result": {"count": 2, "id": "minecraft:bamboo_planks"}},
+    "minecraft:resin_clump": {"ingredients": ["minecraft:resin_block"],
+                              "result": {"count": 9, "id": "minecraft:resin_clump"}},
 }
 
 
@@ -588,7 +705,12 @@ def gen_advancements(pack, recipes):
         ])
 
 
-MAX_STACK = {"ender_pearl": 16}
+MAX_STACK = {
+    "ender_pearl": 16,
+    "goat_horn": 1,
+    "saddle": 1,
+    "totem_of_undying": 1,
+}
 
 
 def output_targets():

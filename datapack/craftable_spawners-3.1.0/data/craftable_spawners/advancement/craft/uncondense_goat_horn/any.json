@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_goat_horn/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/goat_horn"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_goat_horn/on_n"
+  }
+}

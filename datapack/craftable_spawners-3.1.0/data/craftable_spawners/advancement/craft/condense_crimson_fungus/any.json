@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_crimson_fungus/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/crimson_fungus"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_crimson_fungus/on_n"
+  }
+}

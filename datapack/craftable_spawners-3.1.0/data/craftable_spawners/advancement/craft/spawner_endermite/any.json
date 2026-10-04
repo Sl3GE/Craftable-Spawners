@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_endermite/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/endermite"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_endermite/on_n"
+  }
+}

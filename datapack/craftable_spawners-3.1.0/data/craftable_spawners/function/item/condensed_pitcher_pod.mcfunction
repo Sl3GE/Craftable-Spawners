@@ -1,0 +1,1 @@
+$give @s minecraft:pitcher_pod[minecraft:item_name={"text":"Condensed Pitcher Pod","color":"dark_green"},minecraft:lore=[{"text":"Worth 9 Pitcher Pod","color":"gray","italic":false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={"craftable_spawners":{"group":"condensed","tier":"condensed","item":"pitcher_pod"}}] $(count)

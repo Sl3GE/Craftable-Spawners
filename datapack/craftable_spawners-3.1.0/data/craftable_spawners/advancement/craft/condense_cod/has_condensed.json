@@ -1,0 +1,22 @@
+{
+  "parent": "craftable_spawners:craft/condense_cod/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/cod",
+        "ingredients": [
+          {
+            "items": "minecraft:cod",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{group:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_cod/on_h"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "parent": "craftable_spawners:craft/spawner_piglin_brute/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/piglin_brute",
+        "ingredients": [
+          {
+            "items": "minecraft:iron_block",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_piglin_brute/on_b1"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_breeze/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/breeze"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_breeze/on_n"
+  }
+}

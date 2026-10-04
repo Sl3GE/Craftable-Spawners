@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "unlocked": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/nautilus_shell"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_nautilus_shell/end"
+  }
+}

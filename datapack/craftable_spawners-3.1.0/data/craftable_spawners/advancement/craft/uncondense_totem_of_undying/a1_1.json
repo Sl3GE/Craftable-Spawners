@@ -1,0 +1,22 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_totem_of_undying/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/totem_of_undying",
+        "ingredients": [
+          {
+            "items": "minecraft:totem_of_undying",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_totem_of_undying/on_a1"
+  }
+}

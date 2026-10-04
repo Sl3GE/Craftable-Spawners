@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_glow_squid/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/glow_squid"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_glow_squid/on_n"
+  }
+}

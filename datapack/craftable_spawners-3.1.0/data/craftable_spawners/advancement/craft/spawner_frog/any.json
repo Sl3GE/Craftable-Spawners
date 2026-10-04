@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_frog/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/frog"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_frog/on_n"
+  }
+}

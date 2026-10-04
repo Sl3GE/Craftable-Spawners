@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_pufferfish/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/pufferfish"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_pufferfish/on_n"
+  }
+}

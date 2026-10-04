@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_condense",
+  "show_notification": false,
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": "minecraft:salmon"
+  },
+  "result": {
+    "id": "minecraft:salmon",
+    "components": {
+      "minecraft:item_name": {
+        "text": "Condensed Salmon",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "Worth 9 Salmon",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "condensed",
+          "tier": "condensed",
+          "item": "salmon"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "parent": "craftable_spawners:craft/spawner_hoglin/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/hoglin",
+        "ingredients": [
+          {
+            "items": "minecraft:porkchop",
+            "predicates": {
+              "minecraft:custom_data": "{craftable_spawners:{tier:\"condensed\"}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_hoglin/on_b1"
+  }
+}

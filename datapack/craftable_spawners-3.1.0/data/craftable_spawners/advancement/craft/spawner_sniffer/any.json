@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_sniffer/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/sniffer"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_sniffer/on_n"
+  }
+}

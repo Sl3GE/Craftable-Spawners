@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_phantom/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/phantom"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_phantom/on_n"
+  }
+}

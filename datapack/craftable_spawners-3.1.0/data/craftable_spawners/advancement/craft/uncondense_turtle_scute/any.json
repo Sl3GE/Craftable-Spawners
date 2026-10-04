@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_turtle_scute/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/turtle_scute"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_turtle_scute/on_n"
+  }
+}

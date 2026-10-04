@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_sweet_berries/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/sweet_berries"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_sweet_berries/on_n"
+  }
+}

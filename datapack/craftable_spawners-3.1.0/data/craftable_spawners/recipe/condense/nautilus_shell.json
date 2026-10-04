@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_condense",
+  "show_notification": false,
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": "minecraft:nautilus_shell"
+  },
+  "result": {
+    "id": "minecraft:nautilus_shell",
+    "components": {
+      "minecraft:item_name": {
+        "text": "Condensed Nautilus Shell",
+        "color": "dark_green"
+      },
+      "minecraft:lore": [
+        {
+          "text": "Worth 9 Nautilus Shell",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "condensed",
+          "tier": "condensed",
+          "item": "nautilus_shell"
+        }
+      }
+    }
+  }
+}

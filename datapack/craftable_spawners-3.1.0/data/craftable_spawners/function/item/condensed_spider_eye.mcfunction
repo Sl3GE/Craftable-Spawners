@@ -1,0 +1,1 @@
+$give @s minecraft:spider_eye[minecraft:item_name={"text":"Condensed Spider Eye","color":"dark_green"},minecraft:lore=[{"text":"Worth 9 Spider Eye","color":"gray","italic":false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={"craftable_spawners":{"group":"condensed","tier":"condensed","item":"spider_eye"}}] $(count)

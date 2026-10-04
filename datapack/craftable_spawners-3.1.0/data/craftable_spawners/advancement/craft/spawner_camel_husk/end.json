@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "unlocked": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/camel_husk"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_camel_husk/end"
+  }
+}

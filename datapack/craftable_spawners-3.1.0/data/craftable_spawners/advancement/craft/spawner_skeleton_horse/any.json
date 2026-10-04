@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_skeleton_horse/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/skeleton_horse"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_skeleton_horse/on_n"
+  }
+}

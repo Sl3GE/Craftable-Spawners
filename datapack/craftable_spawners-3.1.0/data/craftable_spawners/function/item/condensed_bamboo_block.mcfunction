@@ -1,0 +1,1 @@
+$give @s minecraft:bamboo_block[minecraft:item_name={"text":"Condensed Block of Bamboo","color":"dark_green"},minecraft:lore=[{"text":"Worth 9 Block of Bamboo","color":"gray","italic":false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={"craftable_spawners":{"group":"condensed","tier":"condensed","item":"bamboo_block"}}] $(count)

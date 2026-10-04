@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_spawner",
+  "show_notification": false,
+  "pattern": [
+    "ABA",
+    "BIB",
+    "ABA"
+  ],
+  "key": {
+    "A": "minecraft:potent_sulfur",
+    "B": "minecraft:slime_block",
+    "I": "minecraft:iron_bars"
+  },
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:spawner",
+      "minecraft:item_name": {
+        "text": "Sulfur Cube Spawner",
+        "color": "gold"
+      },
+      "minecraft:lore": [
+        {
+          "text": "4 Condensed Potent Sulfur",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "4 Condensed Slime Block",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "+ Iron Bars",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

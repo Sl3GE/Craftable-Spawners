@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_cave_spider/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/cave_spider"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_cave_spider/on_n"
+  }
+}

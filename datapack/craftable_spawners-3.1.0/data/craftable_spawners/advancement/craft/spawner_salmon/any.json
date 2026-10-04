@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_salmon/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/salmon"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_salmon/on_n"
+  }
+}

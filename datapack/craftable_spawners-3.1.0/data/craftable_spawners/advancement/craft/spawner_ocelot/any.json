@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/spawner_ocelot/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:spawner/ocelot"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/spawner_ocelot/on_n"
+  }
+}

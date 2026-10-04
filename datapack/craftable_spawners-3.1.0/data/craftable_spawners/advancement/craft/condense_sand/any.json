@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/condense_sand/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:condense/sand"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/condense_sand/on_n"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "parent": "craftable_spawners:craft/uncondense_honeycomb_block/root",
+  "criteria": {
+    "crafted": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "craftable_spawners:uncondense/honeycomb_block"
+      }
+    }
+  },
+  "rewards": {
+    "function": "craftable_spawners:craft/uncondense_honeycomb_block/on_n"
+  }
+}
