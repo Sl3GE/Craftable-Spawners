@@ -1,1 +1,0 @@
-$give @s minecraft:beef[minecraft:item_name={"text":"Super Condensed Beef","color":"dark_blue"},minecraft:lore=[{"text":"Worth 81 Beef","color":"gray","italic":false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={"craftable_spawners":{"group":"condensed","tier":"super_condensed","item":"beef"}}] $(count)

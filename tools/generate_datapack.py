@@ -30,7 +30,7 @@ import zipfile
 from pathlib import Path
 
 NS = "craftable_spawners"
-VERSION = "2.0.0"
+VERSION = "3.0.0"
 PACK_FORMAT = 121  # Java Edition 26.3
 DESCRIPTION = "Craftable Spawners v%s - craft mob spawners from condensed mob drops" % VERSION
 PACK_NAME = "%s-%s" % (NS, VERSION)
@@ -41,34 +41,36 @@ OUT = OUT_ROOT / PACK_NAME
 
 PLACEHOLDER_ITEM = "minecraft:command_block"
 
-# (item id, display name, has a super condensed tier)
+# (item id, display name, has a super condensed tier).
+# The super condensed tier stays off. Custom data cannot be required by a
+# vanilla recipe, so every recipe uses condensed items.
 CONDENSED = [
     # Hostile mob items
-    ("bone", "Bone", True),
-    ("rotten_flesh", "Rotten Flesh", True),
-    ("blaze_rod", "Blaze Rod", True),
-    ("gunpowder", "Gunpowder", True),
-    ("string", "String", True),
-    ("ender_pearl", "Ender Pearl", True),
+    ("bone", "Bone", False),
+    ("rotten_flesh", "Rotten Flesh", False),
+    ("blaze_rod", "Blaze Rod", False),
+    ("gunpowder", "Gunpowder", False),
+    ("string", "String", False),
+    ("ender_pearl", "Ender Pearl", False),
     ("slime_block", "Slime Block", False),
-    ("magma_cream", "Magma Cream", True),
+    ("magma_cream", "Magma Cream", False),
     ("ghast_tear", "Ghast Tear", False),
     ("gold_block", "Gold Block", False),
     ("nether_star", "Nether Star", False),
     ("wither_skeleton_skull", "Wither Skeleton Skull", False),
-    ("redstone_block", "Redstone Block", True),
+    ("redstone_block", "Redstone Block", False),
     # Friendly mob items
     ("iron_block", "Iron Block", False),
-    ("leather", "Leather", True),
-    ("beef", "Beef", True),
-    ("carved_pumpkin", "Carved Pumpkin", True),
-    ("snow_block", "Snow Block", True),
-    ("white_wool", "White Wool", True),
-    ("mutton", "Mutton", True),
-    ("porkchop", "Porkchop", True),
-    ("ink_sac", "Ink Sac", True),
-    ("chicken", "Chicken", True),
-    ("feather", "Feather", True),
+    ("leather", "Leather", False),
+    ("beef", "Beef", False),
+    ("carved_pumpkin", "Carved Pumpkin", False),
+    ("snow_block", "Snow Block", False),
+    ("white_wool", "White Wool", False),
+    ("mutton", "Mutton", False),
+    ("porkchop", "Porkchop", False),
+    ("ink_sac", "Ink Sac", False),
+    ("chicken", "Chicken", False),
+    ("feather", "Feather", False),
     ("emerald_block", "Emerald Block", False),
 ]
 
@@ -91,28 +93,28 @@ C, S = 1, 2  # condensed / super condensed
 # (mob, pattern, key). Key values are either a vanilla item id or (base item, tier).
 SPAWNERS = [
     # Hostile
-    ("skeleton", RING, {"X": ("bone", S), "I": "iron_bars"}),
-    ("zombie", RING, {"X": ("rotten_flesh", S), "I": "iron_bars"}),
-    ("blaze", RING, {"X": ("blaze_rod", S), "I": "iron_bars"}),
-    ("creeper", RING, {"X": ("gunpowder", S), "I": "iron_bars"}),
-    ("spider", RING, {"X": ("string", S), "I": "iron_bars"}),
-    ("enderman", RING, {"X": ("ender_pearl", S), "I": "iron_bars"}),
+    ("skeleton", RING, {"X": ("bone", C), "I": "iron_bars"}),
+    ("zombie", RING, {"X": ("rotten_flesh", C), "I": "iron_bars"}),
+    ("blaze", RING, {"X": ("blaze_rod", C), "I": "iron_bars"}),
+    ("creeper", RING, {"X": ("gunpowder", C), "I": "iron_bars"}),
+    ("spider", RING, {"X": ("string", C), "I": "iron_bars"}),
+    ("enderman", RING, {"X": ("ender_pearl", C), "I": "iron_bars"}),
     ("slime", RING, {"X": ("slime_block", C), "I": "iron_bars"}),
-    ("magma_cube", RING, {"X": ("magma_cream", S), "I": "iron_bars"}),
+    ("magma_cube", RING, {"X": ("magma_cream", C), "I": "iron_bars"}),
     ("ghast", RING, {"X": ("ghast_tear", C), "I": "iron_bars"}),
     ("zombified_piglin", RING, {"X": ("gold_block", C), "I": "iron_bars"}),
     ("wither", RING, {"X": ("nether_star", C), "I": "iron_bars"}),
     ("wither_skeleton", RING, {"X": ("wither_skeleton_skull", C), "I": "iron_bars"}),
-    ("witch", ["GRG", "RIR", "GRG"], {"G": ("gunpowder", S), "R": ("redstone_block", S), "I": "iron_bars"}),
+    ("witch", ["GRG", "RIR", "GRG"], {"G": ("gunpowder", C), "R": ("redstone_block", C), "I": "iron_bars"}),
     # Friendly
     ("iron_golem", RING, {"X": ("iron_block", C), "I": "iron_bars"}),
-    ("cow", ["LLL", "BIB", "BBB"], {"L": ("leather", S), "B": ("beef", S), "I": "iron_bars"}),
-    ("snow_golem", ["CCC", "BIB", "BBB"], {"C": ("carved_pumpkin", S), "B": ("snow_block", S), "I": "iron_bars"}),
-    ("sheep", ["WWW", "MIM", "MMM"], {"W": ("white_wool", S), "M": ("mutton", S), "I": "iron_bars"}),
-    ("pig", RING, {"X": ("porkchop", S), "I": "iron_bars"}),
-    ("horse", RING, {"X": ("leather", S), "I": "iron_bars"}),
-    ("squid", RING, {"X": ("ink_sac", S), "I": "iron_bars"}),
-    ("chicken", ["FFF", "CIC", "CCC"], {"F": ("feather", S), "C": ("chicken", S), "I": "iron_bars"}),
+    ("cow", ["LLL", "BIB", "BBB"], {"L": ("leather", C), "B": ("beef", C), "I": "iron_bars"}),
+    ("snow_golem", ["CCC", "BIB", "BBB"], {"C": ("carved_pumpkin", C), "B": ("snow_block", C), "I": "iron_bars"}),
+    ("sheep", ["WWW", "MIM", "MMM"], {"W": ("white_wool", C), "M": ("mutton", C), "I": "iron_bars"}),
+    ("pig", RING, {"X": ("porkchop", C), "I": "iron_bars"}),
+    ("horse", RING, {"X": ("leather", C), "I": "iron_bars"}),
+    ("squid", RING, {"X": ("ink_sac", C), "I": "iron_bars"}),
+    ("chicken", ["FFF", "CIC", "CCC"], {"F": ("feather", C), "C": ("chicken", C), "I": "iron_bars"}),
     ("villager", [" E ", "EIE", " E "], {"E": ("emerald_block", C), "I": "iron_bars"}),
 ]
 
@@ -768,7 +770,7 @@ def gen_items(pack):
     ])
     pack.function("give_item", [
         "# Gives condensed items, e.g.",
-        '# /function %s:give_item {item:"super_condensed_bone",amount:8}' % NS,
+        '# /function %s:give_item {item:"condensed_bone",amount:8}' % NS,
         "$function %s:item/$(item) {count:$(amount)}" % NS,
     ])
 

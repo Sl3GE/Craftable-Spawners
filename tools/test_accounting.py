@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Simulates crafting against the generated advancements and resolver math.
 
-For random crafting grids (plain, condensed and super condensed items mixed)
+For random crafting grids (plain and condensed items mixed)
 this evaluates which generated `recipe_crafted` advancements would fire, feeds
 the resulting counters into the resolver expressions and checks that the
 recipe result plus the resolver's changes is exactly the expected items.

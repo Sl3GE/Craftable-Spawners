@@ -1,1 +1,0 @@
-$give @s minecraft:ink_sac[minecraft:item_name={"text":"Super Condensed Ink Sac","color":"dark_blue"},minecraft:lore=[{"text":"Worth 81 Ink Sac","color":"gray","italic":false}],minecraft:enchantment_glint_override=true,minecraft:custom_data={"craftable_spawners":{"group":"condensed","tier":"super_condensed","item":"ink_sac"}}] $(count)

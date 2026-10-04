@@ -1,0 +1,49 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "craftable_spawners_spawner",
+  "show_notification": false,
+  "pattern": [
+    "CCC",
+    "BIB",
+    "BBB"
+  ],
+  "key": {
+    "C": "minecraft:carved_pumpkin",
+    "B": "minecraft:snow_block",
+    "I": "minecraft:iron_bars"
+  },
+  "result": {
+    "id": "minecraft:command_block",
+    "components": {
+      "minecraft:item_model": "minecraft:spawner",
+      "minecraft:item_name": {
+        "text": "Snow Golem Spawner",
+        "color": "gold"
+      },
+      "minecraft:lore": [
+        {
+          "text": "3 Condensed Carved Pumpkin",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "5 Condensed Snow Block",
+          "color": "gray",
+          "italic": false
+        },
+        {
+          "text": "+ Iron Bars",
+          "color": "gray",
+          "italic": false
+        }
+      ],
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:custom_data": {
+        "craftable_spawners": {
+          "group": "placeholder"
+        }
+      }
+    }
+  }
+}

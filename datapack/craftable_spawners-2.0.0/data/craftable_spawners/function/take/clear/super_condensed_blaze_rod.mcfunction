@@ -1,1 +1,0 @@
-$return run clear @s minecraft:blaze_rod[minecraft:custom_data~{craftable_spawners:{tier:"super_condensed"}}] $(n)
