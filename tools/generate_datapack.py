@@ -34,6 +34,7 @@ PACK_NAME = "%s-%s" % (NS, VERSION)
 REPO = Path(__file__).resolve().parent.parent
 OUT_ROOT = REPO / "datapack"
 OUT = OUT_ROOT / PACK_NAME
+ICON = REPO / "assets" / "Spawner_with_fire.png"
 
 PLACEHOLDER_ITEM = "minecraft:command_block"
 
@@ -513,10 +514,13 @@ class Pack:
     def write(self):
         if self.root.exists():
             shutil.rmtree(self.root)
-        for path, text in sorted(self.files.items()):
+        for path, data in sorted(self.files.items()):
             target = self.root / path
             target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_text(text)
+            if isinstance(data, bytes):
+                target.write_bytes(data)
+            else:
+                target.write_text(data)
 
 
 # --------------------------------------------------------------------------- generation
@@ -946,6 +950,7 @@ def generate(out=OUT):
     gen_items(pack)
     gen_spawner_mechanics(pack)
     gen_core(pack, recipes, constants)
+    pack.files["pack.png"] = ICON.read_bytes()
     pack.write()
     return pack, recipes
 
